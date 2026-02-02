@@ -1,0 +1,26 @@
+# ═══════════════════════════════════════════════════════════
+# BLACKCROW SYSTEM - Directives de navigation
+# ═══════════════════════════════════════════════════════════
+#
+# Certains chemins sont indexés.
+# Certains chemins ne le sont pas.
+# Certains chemins n'existent pas.
+# Certains chemins n'existent pas encore.
+#
+# QLVVP
+#
+# ═══════════════════════════════════════════════════════════
+
+User-agent: *
+Disallow: /archive/
+Disallow: /signal/
+Disallow: /memoire/
+Disallow: /secteur/
+Disallow: /transmission/
+
+# La page d'accueil peut être trouvée.
+# Le reste... c'est à vous de chercher.
+
+# ═══════════════════════════════════════════════════════════
+# 4c6120746572726520657869737465
+# ═══════════════════════════════════════════════════════════

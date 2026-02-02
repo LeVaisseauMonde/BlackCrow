@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>// SIGNAL INTERCEPTÉ //</title>
+    <link rel="icon" type="image/png" href="../../assets/logo-blackcrow.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .signal-header {
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+        }
+
+        .main-message {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .sub-message {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 2px;
+            margin-bottom: 60px;
+        }
+
+        .hashtag {
+            font-size: 16px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .logo-small {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            margin-top: 60px;
+        }
+
+        .signal-footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 9px;
+            color: #222;
+            letter-spacing: 2px;
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 1000;
+            opacity: 0.3;
+        }
+
+        /* Animation d'entrée */
+        .content {
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+    
+    <!--
+        SIGNAL: QR-[CODE]
+        ÉMETTEUR: RÉSISTANCE
+        STATUS: ACTIF
+        
+        Si vous lisez ceci, le signal a été reçu.
+        Cherchez les autres.
+        La mémoire doit survivre.
+        
+        QLVVP
+    -->
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <div class="content">
+        <div class="signal-header">// TRANSMISSION INTERCEPTÉE //</div>
+        
+        <div class="main-message">
+            LA TERRE EXISTE.<br>
+            ILS VEULENT QUE VOUS OUBLIEZ.
+        </div>
+        
+        <div class="sub-message">
+            La mémoire est la résistance.
+        </div>
+        
+        <div class="hashtag">#laterreexiste</div>
+        
+        <img src="../../assets/logo-blackcrow.png" alt="" class="logo-small">
+    </div>
+    
+    <div class="signal-footer">BLACKCROW SYSTEM // SIGNAL EN COURS</div>
+</body>
+</html>
