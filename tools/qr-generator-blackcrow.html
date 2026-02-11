@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackCrow - Générateur QR Cryptique</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #a0a0a0;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header-small {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .header-sub {
+            font-size: 11px;
+            color: #444;
+        }
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .field input[type="text"] {
+            width: 100%;
+            background: #111;
+            border: 1px solid #333;
+            padding: 12px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .field input[type="text"]:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .field input[type="text"]::placeholder {
+            color: #444;
+        }
+
+        .upload-zone {
+            border: 1px dashed #333;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .upload-zone:hover {
+            border-color: #555;
+        }
+
+        .upload-zone .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .upload-zone .text {
+            font-size: 11px;
+            color: #555;
+        }
+
+        .upload-zone img {
+            max-width: 80px;
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+
+        #logoInput {
+            display: none;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            background: #222;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #888;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #444;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 25px;
+        }
+
+        .btn:hover {
+            background: #252525;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-download {
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-download:hover {
+            background: #ddd;
+        }
+
+        .qr-display {
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .qr-display-header {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .qr-wrapper {
+            background: #050505;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            position: relative;
+        }
+
+        #qrCanvas {
+            position: relative;
+        }
+
+        .qr-placeholder {
+            color: #333;
+            font-size: 12px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .footer div {
+            margin: 5px 0;
+        }
+
+        /* Scanlines overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 1000;
+        }
+
+        .final-qr-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .qr-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .logo-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0a0a;
+            padding: 5px;
+            border: 1px solid #333;
+        }
+
+        .logo-center img {
+            display: block;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .corner-marks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cryptic-text {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-small">// SYSTÈME BLACKCROW v0.1</div>
+            <h1>GÉNÉRATEUR QR CRYPTIQUE</h1>
+            <div class="header-sub">Module de création de signaux</div>
+        </div>
+
+        <div class="field">
+            <label>> URL_DESTINATION</label>
+            <input type="text" id="urlInput" placeholder="https://ton-site.com/page-secrete">
+        </div>
+
+        <div class="field">
+            <label>> LOGO_CENTRAL [optionnel]</label>
+            <div class="upload-zone" id="uploadZone">
+                <div id="uploadContent">
+                    <div class="icon">⬆</div>
+                    <div class="text">Uploader le logo BlackCrow</div>
+                </div>
+            </div>
+            <input type="file" id="logoInput" accept="image/*">
+        </div>
+
+        <div class="field">
+            <label>> NIVEAU_CORRUPTION: <span id="glitchValue">2</span></label>
+            <div class="slider-container">
+                <input type="range" id="glitchSlider" min="0" max="5" value="2">
+            </div>
+            <div class="slider-labels">
+                <span>STABLE</span>
+                <span>CORROMPU</span>
+            </div>
+        </div>
+
+        <button class="btn" id="generateBtn">[ GÉNÉRER SIGNAL ]</button>
+
+        <div class="qr-display">
+            <div class="qr-display-header">// APERÇU_SIGNAL</div>
+            <div class="qr-wrapper">
+                <div id="qrOutput">
+                    <span class="qr-placeholder">En attente de signal...</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-download" id="downloadBtn" style="display: none;">⬇ TÉLÉCHARGER QR CODE</button>
+
+        <div class="footer">
+            <div>// LA TERRE EXISTE //</div>
+            <div>QLVVP 🖤</div>
+        </div>
+    </div>
+
+    <script>
+        let logoDataUrl = null;
+        let qrInstance = null;
+
+        const urlInput = document.getElementById('urlInput');
+        const logoInput = document.getElementById('logoInput');
+        const uploadZone = document.getElementById('uploadZone');
+        const uploadContent = document.getElementById('uploadContent');
+        const glitchSlider = document.getElementById('glitchSlider');
+        const glitchValue = document.getElementById('glitchValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const qrOutput = document.getElementById('qrOutput');
+
+        // Logo upload
+        uploadZone.addEventListener('click', () => logoInput.click());
+        
+        logoInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    logoDataUrl = event.target.result;
+                    uploadContent.innerHTML = `
+                        <img src="${logoDataUrl}" alt="Logo">
+                        <div class="text">Cliquer pour changer</div>
+                    `;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Glitch slider
+        glitchSlider.addEventListener('input', (e) => {
+            glitchValue.textContent = e.target.value;
+        });
+
+        // Generate QR
+        generateBtn.addEventListener('click', () => {
+            const url = urlInput.value.trim();
+            if (!url) {
+                alert('Entre une URL !');
+                return;
+            }
+
+            // Clear previous
+            qrOutput.innerHTML = '';
+            
+            // Create container for QR + effects
+            const container = document.createElement('div');
+            container.className = 'final-qr-container';
+            container.id = 'finalQR';
+            
+            const qrDiv = document.createElement('div');
+            qrDiv.id = 'qrCode';
+            container.appendChild(qrDiv);
+            
+            qrOutput.appendChild(container);
+
+            // Generate QR code
+            qrInstance = new QRCode(qrDiv, {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: "#ffffff",
+                colorLight: "#0a0a0a",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Wait for QR to render, then add effects
+            setTimeout(() => {
+                addEffects(container);
+                downloadBtn.style.display = 'block';
+            }, 100);
+        });
+
+        function addEffects(container) {
+            const glitchLevel = parseInt(glitchSlider.value);
+            
+            // Add logo if exists
+            if (logoDataUrl) {
+                const logoDiv = document.createElement('div');
+                logoDiv.className = 'logo-center';
+                logoDiv.innerHTML = `<img src="${logoDataUrl}" alt="Logo">`;
+                container.appendChild(logoDiv);
+            }
+
+            // Add cryptic text
+            const crypticDiv = document.createElement('div');
+            crypticDiv.className = 'cryptic-text';
+            crypticDiv.innerHTML = `
+                <span>// SIGNAL INTERCEPTÉ //</span>
+                <span>[ BLACKCROW ]</span>
+            `;
+            container.appendChild(crypticDiv);
+
+            // Apply glitch effect to QR image
+            if (glitchLevel > 0) {
+                const qrImg = container.querySelector('img');
+                if (qrImg) {
+                    qrImg.style.filter = `contrast(${100 + glitchLevel * 5}%) brightness(${100 + glitchLevel * 2}%)`;
+                    
+                    // Add slight rotation for corruption effect
+                    if (glitchLevel >= 3) {
+                        qrImg.style.transform = `rotate(${(Math.random() - 0.5) * glitchLevel * 0.5}deg)`;
+                    }
+                }
+            }
+        }
+
+        // Download
+        downloadBtn.addEventListener('click', () => {
+            const qrContainer = document.getElementById('finalQR');
+            const qrImg = qrContainer.querySelector('#qrCode img');
+            
+            if (!qrImg) {
+                alert('Génère d\'abord un QR code !');
+                return;
+            }
+
+            // Create canvas for final image
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const size = 400;
+            const margin = 40;
+            
+            canvas.width = size;
+            canvas.height = size + 30; // Extra space for text
+
+            // Background
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw QR
+            const img = new Image();
+            img.onload = () => {
+                const qrSize = size - margin * 2;
+                ctx.drawImage(img, margin, margin, qrSize, qrSize);
+
+                // Draw logo if exists
+                if (logoDataUrl) {
+                    const logoImg = new Image();
+                    logoImg.onload = () => {
+                        const logoSize = 60;
+                        const logoX = (size - logoSize) / 2;
+                        const logoY = margin + (qrSize - logoSize) / 2;
+                        
+                        // Logo background
+                        ctx.fillStyle = '#0a0a0a';
+                        ctx.fillRect(logoX - 8, logoY - 8, logoSize + 16, logoSize + 16);
+                        
+                        // Logo border
+                        ctx.strokeStyle = '#333';
+                        ctx.strokeRect(logoX - 8, logoY - 8, logoSize + 16, logoSize + 16);
+                        
+                        // Logo
+                        ctx.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
+                        
+                        finishCanvas(canvas, ctx, size, margin);
+                    };
+                    logoImg.src = logoDataUrl;
+                } else {
+                    finishCanvas(canvas, ctx, size, margin);
+                }
+            };
+            img.src = qrImg.src;
+        });
+
+        function finishCanvas(canvas, ctx, size, margin) {
+            // Corner marks
+            ctx.strokeStyle = '#444';
+            ctx.lineWidth = 2;
+            
+            // Top left
+            ctx.beginPath();
+            ctx.moveTo(10, 25);
+            ctx.lineTo(10, 10);
+            ctx.lineTo(25, 10);
+            ctx.stroke();
+            
+            // Top right
+            ctx.beginPath();
+            ctx.moveTo(size - 25, 10);
+            ctx.lineTo(size - 10, 10);
+            ctx.lineTo(size - 10, 25);
+            ctx.stroke();
+            
+            // Bottom left
+            ctx.beginPath();
+            ctx.moveTo(10, size - 25 + margin);
+            ctx.lineTo(10, size - 10 + margin);
+            ctx.lineTo(25, size - 10 + margin);
+            ctx.stroke();
+            
+            // Bottom right
+            ctx.beginPath();
+            ctx.moveTo(size - 25, size - 10 + margin);
+            ctx.lineTo(size - 10, size - 10 + margin);
+            ctx.lineTo(size - 10, size - 25 + margin);
+            ctx.stroke();
+
+            // Cryptic text
+            ctx.fillStyle = '#555';
+            ctx.font = '10px Courier New';
+            ctx.fillText('// SIGNAL INTERCEPTÉ //', margin, size + 20);
+            ctx.fillText('[ BLACKCROW ]', size - margin - 85, size + 20);
+
+            // Add scanlines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < canvas.height; i += 3) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+
+            // Download
+            const link = document.createElement('a');
+            link.download = 'qr-blackcrow-' + Date.now() + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
