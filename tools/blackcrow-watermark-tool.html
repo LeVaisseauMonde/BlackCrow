@@ -3,7 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlackCrow - Watermark Tool</title>
+    
+    <!-- SEO META TAGS -->
+    <title>Ajouter Watermark Image Gratuit en Ligne | Outil Filigrane - BlackCrow OS</title>
+    <meta name="description" content="Ajoutez un watermark ou filigrane à vos images gratuitement. Outil en ligne sans inscription : positionnement, opacité, taille ajustables. Protégez vos photos - BlackCrow OS.">
+    <meta name="keywords" content="watermark image, filigrane photo, ajouter watermark gratuit, watermark en ligne, protéger image, logo sur photo, outil watermark gratuit, blackcrow, vaisseau-monde">
+    <meta name="author" content="Le Vaisseau-Monde">
+    <meta name="robots" content="index, follow">
+    
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Ajouter Watermark Image Gratuit | BlackCrow OS">
+    <meta property="og:description" content="Ajoutez un watermark à vos images gratuitement. Positionnement, opacité et taille personnalisables. Outil en ligne sans inscription.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html">
+    <meta property="og:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta property="og:site_name" content="BlackCrow OS - Le Vaisseau-Monde">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@adirawashere">
+    <meta name="twitter:title" content="Ajouter Watermark Image Gratuit | BlackCrow OS">
+    <meta name="twitter:description" content="Ajoutez un filigrane à vos images gratuitement. Outil en ligne personnalisable.">
+    <meta name="twitter:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    
+    <!-- SCHEMA.ORG -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Outil Watermark BlackCrow",
+        "alternateName": "Ajout filigrane image gratuit",
+        "description": "Ajoutez un watermark ou filigrane à vos images gratuitement en ligne. Positionnement, opacité et taille personnalisables.",
+        "url": "https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "featureList": [
+            "Ajout de watermark personnalisé",
+            "9 positions de placement",
+            "Opacité réglable",
+            "Taille ajustable",
+            "Export PNG haute qualité",
+            "Aucune inscription requise"
+        ],
+        "author": {
+            "@type": "Organization",
+            "name": "Le Vaisseau-Monde",
+            "url": "https://www.vaisseau-monde.fr"
+        }
+    }
+    </script>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../assets/logo-blackcrow.png">
+    
+    <!--
+    ╔═══════════════════════════════════════════════════════════════╗
+    ║   MODULE: MARQUE.SYS                                         ║
+    ║   Fonction: Marquage et protection d'archives visuelles      ║
+    ║   Status: OPÉRATIONNEL                                       ║
+    ║   Accès: PUBLIC                                              ║
+    ╚═══════════════════════════════════════════════════════════════╝
+    
+    Chaque archive doit porter sa marque.
+    Chaque image doit révéler son origine.
+    
+    QLVVP 🖤
+    -->
+    
     <style>
         * {
             margin: 0;
@@ -22,6 +97,20 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 11px;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #888;
         }
 
         .header {
@@ -43,16 +132,38 @@
             margin-bottom: 5px;
         }
 
+        .header-sub {
+            font-size: 11px;
+            color: #444;
+        }
+
+        /* SEO text discret */
+        .seo-intro {
+            font-size: 11px;
+            color: #2a2a2a;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-left: 2px solid #1a1a1a;
+            line-height: 1.5;
+        }
+
         .main-grid {
             display: grid;
             grid-template-columns: 350px 1fr;
             gap: 20px;
         }
 
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .panel {
             border: 1px solid #333;
             padding: 20px;
             background: #0f0f0f;
+            margin-bottom: 20px;
         }
 
         .panel-title {
@@ -311,80 +422,161 @@
             cursor: pointer;
             margin: 0;
         }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .faq-section h2 {
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+        }
+
+        .faq-item h3 {
+            font-size: 10px;
+            color: #3a3a3a;
+            margin-bottom: 4px;
+            font-weight: normal;
+        }
+
+        .faq-item p {
+            font-size: 10px;
+            color: #2a2a2a;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #333;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer div {
+            margin: 5px 0;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #444;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #888;
+        }
+
+        .footer-ecosystem {
+            margin-top: 12px;
+            font-size: 9px;
+            color: #2a2a2a;
+        }
+
+        .footer-ecosystem a {
+            color: #3a3a3a;
+            text-decoration: none;
+        }
+
+        .footer-ecosystem a:hover {
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <div class="scanlines"></div>
     
     <div class="container">
-        <div class="header">
-            <div class="header-small">// SYSTÈME BLACKCROW v0.2</div>
-            <h1>WATERMARK TOOL</h1>
-            <div class="header-sub">Module de marquage d'archives</div>
-        </div>
+        <a href="../index.html" class="back-link">← RETOUR_SYSTÈME</a>
+        
+        <header class="header">
+            <div class="header-small">// BLACKCROW_OS / TOOLS / MARQUE.SYS</div>
+            <h1>Ajouter Watermark - Outil Filigrane Gratuit</h1>
+            <div class="header-sub">Module de marquage et protection d'archives visuelles — v0.2</div>
+        </header>
+
+        <!-- SEO intro discret -->
+        <p class="seo-intro">Ajoutez un watermark ou filigrane à vos images gratuitement. Personnalisez la position, l'opacité et la taille. Export PNG haute qualité, aucune inscription requise.</p>
 
         <div class="main-grid">
             <!-- LEFT PANEL -->
             <div>
                 <!-- IMAGE UPLOAD -->
-                <div class="panel">
+                <section class="panel">
                     <div class="panel-title">// Image Source</div>
-                    <div class="upload-zone" id="imageUploadZone">
+                    <div class="upload-zone" id="imageUploadZone" role="button" aria-label="Charger une image">
                         <div class="icon">⬆</div>
                         <div class="text">Cliquer pour charger une image</div>
-                        <div class="text" style="margin-top: 8px; color: #444;">16:9 / 1:1 / 9:16</div>
+                        <div class="text" style="margin-top: 8px; color: #444;">JPG, PNG, WebP acceptés</div>
                     </div>
-                    <input type="file" id="imageInput" accept="image/*">
+                    <input type="file" id="imageInput" accept="image/*" aria-label="Sélectionner image source">
 
                     <button class="btn" id="resetBtn" disabled>↻ Réinitialiser</button>
-                </div>
+                </section>
 
                 <!-- WATERMARK UPLOAD -->
-                <div class="panel">
-                    <div class="panel-title">// Watermark</div>
-                    <div class="upload-zone" id="watermarkUploadZone">
+                <section class="panel">
+                    <div class="panel-title">// Watermark / Filigrane</div>
+                    <div class="upload-zone" id="watermarkUploadZone" role="button" aria-label="Charger watermark">
                         <div id="watermarkPreview">
                             <div class="icon">🖼</div>
-                            <div class="text">Charger watermark (PNG recommandé)</div>
+                            <div class="text">Charger votre logo (PNG recommandé)</div>
                         </div>
                     </div>
-                    <input type="file" id="watermarkInput" accept="image/*">
+                    <input type="file" id="watermarkInput" accept="image/*" aria-label="Sélectionner watermark">
 
                     <div class="slider-container">
                         <div class="slider-row">
-                            <label>Taille</label>
-                            <input type="range" id="watermarkSize" min="5" max="50" value="15">
+                            <label for="watermarkSize">Taille</label>
+                            <input type="range" id="watermarkSize" min="5" max="50" value="15" aria-label="Taille du watermark">
                             <span class="value" id="sizeValue">15%</span>
                         </div>
                         <div class="slider-row">
-                            <label>Opacité</label>
-                            <input type="range" id="watermarkOpacity" min="10" max="100" value="70">
+                            <label for="watermarkOpacity">Opacité</label>
+                            <input type="range" id="watermarkOpacity" min="10" max="100" value="70" aria-label="Opacité du watermark">
                             <span class="value" id="opacityValue">70%</span>
                         </div>
                         <div class="slider-row">
-                            <label>Marge</label>
-                            <input type="range" id="watermarkMargin" min="0" max="100" value="20">
+                            <label for="watermarkMargin">Marge</label>
+                            <input type="range" id="watermarkMargin" min="0" max="100" value="20" aria-label="Marge du watermark">
                             <span class="value" id="marginValue">20px</span>
                         </div>
                     </div>
 
-                    <div class="panel-title" style="margin-top: 20px;">Position</div>
-                    <div class="position-grid">
-                        <button class="position-btn" data-position="top-left">↖</button>
-                        <button class="position-btn" data-position="top-center">↑</button>
-                        <button class="position-btn" data-position="top-right">↗</button>
-                        <button class="position-btn" data-position="center-left">←</button>
-                        <button class="position-btn" data-position="center">+</button>
-                        <button class="position-btn" data-position="center-right">→</button>
-                        <button class="position-btn" data-position="bottom-left">↙</button>
-                        <button class="position-btn" data-position="bottom-center">↓</button>
-                        <button class="position-btn active" data-position="bottom-right">↘</button>
+                    <div class="panel-title" style="margin-top: 20px;">Position du filigrane</div>
+                    <div class="position-grid" role="group" aria-label="Position du watermark">
+                        <button class="position-btn" data-position="top-left" title="Haut gauche">↖</button>
+                        <button class="position-btn" data-position="top-center" title="Haut centre">↑</button>
+                        <button class="position-btn" data-position="top-right" title="Haut droit">↗</button>
+                        <button class="position-btn" data-position="center-left" title="Centre gauche">←</button>
+                        <button class="position-btn" data-position="center" title="Centre">+</button>
+                        <button class="position-btn" data-position="center-right" title="Centre droit">→</button>
+                        <button class="position-btn" data-position="bottom-left" title="Bas gauche">↙</button>
+                        <button class="position-btn" data-position="bottom-center" title="Bas centre">↓</button>
+                        <button class="position-btn active" data-position="bottom-right" title="Bas droit">↘</button>
                     </div>
-                </div>
+                </section>
 
                 <!-- METADATA -->
-                <div class="panel">
-                    <div class="panel-title">// Métadonnées</div>
+                <section class="panel">
+                    <div class="panel-title">// Métadonnées (optionnel)</div>
                     
                     <div class="checkbox-field">
                         <input type="checkbox" id="showMetadata" checked>
@@ -392,89 +584,114 @@
                     </div>
 
                     <div class="field">
-                        <label>Titre</label>
-                        <input type="text" id="metaTitle" placeholder="FALLOUT_EXPLOSION_01">
+                        <label for="metaTitle">Titre</label>
+                        <input type="text" id="metaTitle" placeholder="NOM_FICHIER">
                     </div>
 
                     <div class="field">
-                        <label>Date (Année)</label>
-                        <input type="number" id="metaYear" placeholder="3026" value="3026">
+                        <label for="metaYear">Date (Année)</label>
+                        <input type="text" id="metaYear" placeholder="2026" value="2026">
                     </div>
 
                     <div class="field">
-                        <label>Source</label>
+                        <label for="metaSource">Source</label>
                         <input type="text" id="metaSource" placeholder="BLACKCROW_ARCHIVES" value="BLACKCROW_ARCHIVES">
                     </div>
 
                     <div class="metadata-preview">
                         <div>[<span id="previewSource">BLACKCROW_ARCHIVES</span>]</div>
                         <div>FICHIER: <span id="previewTitle">-</span></div>
-                        <div>DATE: <span id="previewYear">3026</span></div>
+                        <div>DATE: <span id="previewYear">2026</span></div>
                     </div>
-                </div>
+                </section>
 
                 <!-- EXPORT -->
-                <div class="panel">
-                    <div class="panel-title">// Export</div>
-                    <div class="info-box">
-                        Export en PNG pour qualité maximale sans perte.
-                    </div>
-                    <button class="btn btn-primary" id="exportBtn" disabled>⬇ TÉLÉCHARGER IMAGE</button>
-                </div>
+                <button class="btn btn-primary" id="exportBtn" disabled>⬇ TÉLÉCHARGER IMAGE (PNG)</button>
             </div>
 
-            <!-- RIGHT PANEL - PREVIEW -->
-            <div class="panel">
-                <div class="panel-title">// Aperçu</div>
+            <!-- RIGHT PANEL - CANVAS -->
+            <div>
                 <div class="canvas-container">
                     <div class="placeholder" id="placeholder">
-                        En attente d'image source...
+                        <div>Chargez une image pour commencer</div>
+                        <div style="margin-top: 10px; font-size: 11px; color: #222;">Votre image n'est jamais uploadée sur un serveur</div>
                     </div>
                     <canvas id="previewCanvas" style="display: none;"></canvas>
                 </div>
+
+                <!-- FAQ pour SEO -->
+                <section class="faq-section">
+                    <h2>// QUESTIONS FRÉQUENTES</h2>
+                    
+                    <article class="faq-item">
+                        <h3>> Qu'est-ce qu'un watermark ?</h3>
+                        <p>Un watermark (filigrane) est une image ou texte semi-transparent ajouté sur une photo pour la protéger ou indiquer son origine. Souvent utilisé par les photographes et créateurs.</p>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <h3>> Mes images sont-elles uploadées ?</h3>
+                        <p>Non. Tout le traitement se fait dans votre navigateur. Vos images ne quittent jamais votre ordinateur — aucun serveur n'y a accès.</p>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <h3>> Quel format pour mon watermark ?</h3>
+                        <p>PNG avec fond transparent recommandé. Cela permet au watermark de s'intégrer proprement sur n'importe quelle image.</p>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <h3>> C'est quoi BlackCrow OS ?</h3>
+                        <p>BlackCrow est l'interface système du <a href="https://www.vaisseau-monde.fr" target="_blank" rel="noopener">Vaisseau-Monde</a>, un univers de science-fiction. Cet outil fait partie des modules publics.</p>
+                    </article>
+                </section>
             </div>
         </div>
+
+        <footer class="footer">
+            <div>// ARCHIVE MARQUÉE //</div>
+            <div>QLVVP 🖤</div>
+            
+            <nav class="footer-links" aria-label="Autres outils">
+                <a href="../index.html">Accueil BlackCrow</a>
+                <a href="./qr-generator-blackcrow.html">Générateur QR Code</a>
+            </nav>
+            
+            <div class="footer-ecosystem">
+                <p>Cet outil fait partie de l'univers <a href="https://www.vaisseau-monde.fr" target="_blank" rel="noopener">Le Vaisseau-Monde</a></p>
+                <p style="margin-top: 5px;">
+                    <a href="https://www.wattpad.com/story/407419657-le-vaisseau-monde" target="_blank" rel="noopener">Lire sur Wattpad</a> · 
+                    <a href="https://www.youtube.com/@VaisseauMonde" target="_blank" rel="noopener">YouTube</a> · 
+                    <a href="https://www.tiktok.com/@adirawashere" target="_blank" rel="noopener">TikTok</a>
+                </p>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // STORAGE KEYS
+        // === STORAGE KEYS ===
         const STORAGE_KEYS = {
-            watermarkSize: 'bcw_watermark_size',
-            watermarkOpacity: 'bcw_watermark_opacity',
-            watermarkMargin: 'bcw_watermark_margin',
-            watermarkPosition: 'bcw_watermark_position',
-            metaTitle: 'bcw_meta_title',
-            metaYear: 'bcw_meta_year',
-            metaSource: 'bcw_meta_source',
-            showMetadata: 'bcw_show_metadata',
-            watermarkDataURL: 'bcw_watermark_image'
+            watermarkSize: 'blackcrow_wm_size',
+            watermarkOpacity: 'blackcrow_wm_opacity',
+            watermarkMargin: 'blackcrow_wm_margin',
+            watermarkPosition: 'blackcrow_wm_position',
+            watermarkDataURL: 'blackcrow_wm_dataurl',
+            metaTitle: 'blackcrow_meta_title',
+            metaYear: 'blackcrow_meta_year',
+            metaSource: 'blackcrow_meta_source',
+            showMetadata: 'blackcrow_show_meta'
         };
 
-        // STATE
-        let sourceImage = null;
-        let watermarkImage = null;
-        let currentPosition = 'bottom-right';
-
-        // ELEMENTS
+        // === DOM ELEMENTS ===
         const imageInput = document.getElementById('imageInput');
         const imageUploadZone = document.getElementById('imageUploadZone');
         const watermarkInput = document.getElementById('watermarkInput');
         const watermarkUploadZone = document.getElementById('watermarkUploadZone');
-        const canvas = document.getElementById('previewCanvas');
-        const ctx = canvas.getContext('2d', { alpha: false });
-        const placeholder = document.getElementById('placeholder');
-        const exportBtn = document.getElementById('exportBtn');
-        const resetBtn = document.getElementById('resetBtn');
-
-        // SLIDERS
         const watermarkSize = document.getElementById('watermarkSize');
         const watermarkOpacity = document.getElementById('watermarkOpacity');
         const watermarkMargin = document.getElementById('watermarkMargin');
         const sizeValue = document.getElementById('sizeValue');
         const opacityValue = document.getElementById('opacityValue');
         const marginValue = document.getElementById('marginValue');
-
-        // METADATA
+        const positionBtns = document.querySelectorAll('.position-btn');
         const metaTitle = document.getElementById('metaTitle');
         const metaYear = document.getElementById('metaYear');
         const metaSource = document.getElementById('metaSource');
@@ -482,17 +699,24 @@
         const previewTitle = document.getElementById('previewTitle');
         const previewYear = document.getElementById('previewYear');
         const previewSource = document.getElementById('previewSource');
+        const exportBtn = document.getElementById('exportBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const canvas = document.getElementById('previewCanvas');
+        const ctx = canvas.getContext('2d');
+        const placeholder = document.getElementById('placeholder');
 
-        // POSITION BUTTONS
-        const positionBtns = document.querySelectorAll('.position-btn');
+        // === STATE ===
+        let sourceImage = null;
+        let watermarkImage = null;
+        let currentPosition = 'bottom-right';
 
-        // LOAD SAVED SETTINGS
+        // === FUNCTIONS ===
         function loadSettings() {
             watermarkSize.value = localStorage.getItem(STORAGE_KEYS.watermarkSize) || 15;
             watermarkOpacity.value = localStorage.getItem(STORAGE_KEYS.watermarkOpacity) || 70;
             watermarkMargin.value = localStorage.getItem(STORAGE_KEYS.watermarkMargin) || 20;
             metaTitle.value = localStorage.getItem(STORAGE_KEYS.metaTitle) || '';
-            metaYear.value = localStorage.getItem(STORAGE_KEYS.metaYear) || '3026';
+            metaYear.value = localStorage.getItem(STORAGE_KEYS.metaYear) || '2026';
             metaSource.value = localStorage.getItem(STORAGE_KEYS.metaSource) || 'BLACKCROW_ARCHIVES';
             
             const savedPosition = localStorage.getItem(STORAGE_KEYS.watermarkPosition) || 'bottom-right';
@@ -507,7 +731,6 @@
             updateMetadataPreview();
             updatePositionButtons();
 
-            // Load saved watermark image
             const savedWatermark = localStorage.getItem(STORAGE_KEYS.watermarkDataURL);
             if (savedWatermark) {
                 loadWatermarkFromDataURL(savedWatermark);
@@ -533,7 +756,7 @@
 
         function updateMetadataPreview() {
             previewTitle.textContent = metaTitle.value || '-';
-            previewYear.textContent = metaYear.value || '3026';
+            previewYear.textContent = metaYear.value || '2026';
             previewSource.textContent = metaSource.value || 'BLACKCROW_ARCHIVES';
         }
 
@@ -573,7 +796,6 @@
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     loadWatermarkFromDataURL(event.target.result);
-                    // Save watermark to localStorage
                     localStorage.setItem(STORAGE_KEYS.watermarkDataURL, event.target.result);
                 };
                 reader.readAsDataURL(file);
@@ -584,10 +806,9 @@
             const img = new Image();
             img.onload = () => {
                 watermarkImage = img;
-                // Update preview in upload zone
                 document.getElementById('watermarkPreview').innerHTML = `
-                    <img src="${dataURL}" style="max-width: 100px; max-height: 100px;">
-                    <div class="text" style="margin-top: 8px;">Watermark chargé</div>
+                    <img src="${dataURL}" style="max-width: 100px; max-height: 100px;" alt="Watermark chargé">
+                    <div class="text" style="margin-top: 8px;">Watermark chargé ✓</div>
                 `;
                 renderPreview();
             };
@@ -631,63 +852,30 @@
         function renderPreview() {
             if (!sourceImage) return;
 
-            // Set canvas size to source image size
             canvas.width = sourceImage.width;
             canvas.height = sourceImage.height;
-
-            // Draw source image
             ctx.drawImage(sourceImage, 0, 0);
 
-            // Draw watermark if exists
             if (watermarkImage) {
                 const size = parseInt(watermarkSize.value) / 100;
                 const opacity = parseInt(watermarkOpacity.value) / 100;
                 const margin = parseInt(watermarkMargin.value);
 
-                // Calculate watermark size (relative to image width)
                 const wmWidth = canvas.width * size;
                 const wmHeight = (watermarkImage.height / watermarkImage.width) * wmWidth;
 
-                // Calculate position
                 let x, y;
                 switch (currentPosition) {
-                    case 'top-left':
-                        x = margin;
-                        y = margin;
-                        break;
-                    case 'top-center':
-                        x = (canvas.width - wmWidth) / 2;
-                        y = margin;
-                        break;
-                    case 'top-right':
-                        x = canvas.width - wmWidth - margin;
-                        y = margin;
-                        break;
-                    case 'center-left':
-                        x = margin;
-                        y = (canvas.height - wmHeight) / 2;
-                        break;
-                    case 'center':
-                        x = (canvas.width - wmWidth) / 2;
-                        y = (canvas.height - wmHeight) / 2;
-                        break;
-                    case 'center-right':
-                        x = canvas.width - wmWidth - margin;
-                        y = (canvas.height - wmHeight) / 2;
-                        break;
-                    case 'bottom-left':
-                        x = margin;
-                        y = canvas.height - wmHeight - margin;
-                        break;
-                    case 'bottom-center':
-                        x = (canvas.width - wmWidth) / 2;
-                        y = canvas.height - wmHeight - margin;
-                        break;
+                    case 'top-left': x = margin; y = margin; break;
+                    case 'top-center': x = (canvas.width - wmWidth) / 2; y = margin; break;
+                    case 'top-right': x = canvas.width - wmWidth - margin; y = margin; break;
+                    case 'center-left': x = margin; y = (canvas.height - wmHeight) / 2; break;
+                    case 'center': x = (canvas.width - wmWidth) / 2; y = (canvas.height - wmHeight) / 2; break;
+                    case 'center-right': x = canvas.width - wmWidth - margin; y = (canvas.height - wmHeight) / 2; break;
+                    case 'bottom-left': x = margin; y = canvas.height - wmHeight - margin; break;
+                    case 'bottom-center': x = (canvas.width - wmWidth) / 2; y = canvas.height - wmHeight - margin; break;
                     case 'bottom-right':
-                    default:
-                        x = canvas.width - wmWidth - margin;
-                        y = canvas.height - wmHeight - margin;
-                        break;
+                    default: x = canvas.width - wmWidth - margin; y = canvas.height - wmHeight - margin; break;
                 }
 
                 ctx.globalAlpha = opacity;
@@ -695,7 +883,6 @@
                 ctx.globalAlpha = 1;
             }
 
-            // Draw metadata if enabled
             if (showMetadata.checked) {
                 const fontSize = Math.max(10, canvas.width * 0.012);
                 ctx.font = `${fontSize}px 'Courier New', monospace`;
@@ -709,7 +896,7 @@
                 const metaLines = [
                     `[${metaSource.value}]`,
                     `FICHIER: ${metaTitle.value || 'UNTITLED'}`,
-                    `DATE: ${metaYear.value || '3026'}`
+                    `DATE: ${metaYear.value || '2026'}`
                 ];
 
                 metaLines.forEach((line, index) => {
@@ -717,7 +904,6 @@
                 });
             }
 
-            // Show canvas
             placeholder.style.display = 'none';
             canvas.style.display = 'block';
         }
@@ -729,7 +915,7 @@
             const link = document.createElement('a');
             const filename = metaTitle.value 
                 ? `${metaTitle.value}_${metaYear.value}.png`
-                : `blackcrow_export_${Date.now()}.png`;
+                : `blackcrow_watermark_${Date.now()}.png`;
             
             link.download = filename;
             link.href = canvas.toDataURL('image/png');
