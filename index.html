@@ -3,10 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="undefined">
-    <meta name="author" content="nobody">
+    
+    <!-- SEO META TAGS (Google voit ça, l'utilisateur voit l'interface cryptique) -->
+    <title>BlackCrow OS | Interface du Vaisseau-Monde - Outils Gratuits & Univers SF</title>
+    <meta name="description" content="BlackCrow OS : interface système du Vaisseau-Monde. Découvrez des outils gratuits (générateur QR code, watermark) et plongez dans un univers de science-fiction immersif.">
+    <meta name="keywords" content="blackcrow, vaisseau-monde, science-fiction, outils gratuits, générateur qr code, univers sf, fiction interactive">
+    <meta name="author" content="Le Vaisseau-Monde">
     <meta name="robots" content="index, follow">
-    <title>.</title>
+    
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://levaisseaumonde.github.io/BlackCrow/">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="BlackCrow OS | Interface du Vaisseau-Monde">
+    <meta property="og:description" content="Explorez l'interface système du Vaisseau-Monde. Outils gratuits et univers de science-fiction immersif.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levaisseaumonde.github.io/BlackCrow/">
+    <meta property="og:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta property="og:site_name" content="BlackCrow OS - Le Vaisseau-Monde">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@adirawashere">
+    <meta name="twitter:title" content="BlackCrow OS | Interface du Vaisseau-Monde">
+    <meta name="twitter:description" content="Explorez l'interface système du Vaisseau-Monde. Outils gratuits et univers SF immersif.">
+    <meta name="twitter:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    
+    <!-- SCHEMA.ORG -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "BlackCrow OS",
+        "alternateName": "Le Vaisseau-Monde Interface",
+        "description": "Interface système du Vaisseau-Monde - Outils gratuits et univers de science-fiction",
+        "url": "https://levaisseaumonde.github.io/BlackCrow/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://levaisseaumonde.github.io/BlackCrow/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Le Vaisseau-Monde",
+            "url": "https://www.vaisseau-monde.fr",
+            "sameAs": [
+                "https://www.youtube.com/@VaisseauMonde",
+                "https://www.wattpad.com/user/LeVaisseauMonde"
+            ]
+        }
+    }
+    </script>
+    
+    <!-- SCHEMA.ORG - Liste des outils -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Outils BlackCrow OS",
+        "description": "Outils gratuits disponibles sur BlackCrow OS",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "WebApplication",
+                    "name": "Générateur QR Code",
+                    "url": "https://levaisseaumonde.github.io/BlackCrow/tools/qr-generator-blackcrow.html",
+                    "description": "Créez des QR codes personnalisés avec logo gratuitement"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "WebApplication",
+                    "name": "Outil Watermark",
+                    "url": "https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html",
+                    "description": "Ajoutez des filigranes à vos images"
+                }
+            }
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/logo-blackcrow.png">
     
@@ -17,7 +98,7 @@
     ║   Build: 2847-GENESIS                                         ║
     ║   Dernière synchronisation: [DONNÉES CORROMPUES]             ║
     ║                                                               ║
-    ║   Maintenance: https://youtube.com/@VaisseauMonde                          ║
+    ║   Maintenance: https://youtube.com/@VaisseauMonde            ║
     ║   Status: EN ATTENTE DE SIGNAL                               ║
     ║                                                               ║
     ╚═══════════════════════════════════════════════════════════════╝
@@ -125,15 +206,67 @@
             animation: btnGlitch 12s infinite;
             animation-delay: 3s;
         }
+
+        /* Contenu SEO caché visuellement mais accessible */
+        .seo-content {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        /* Footer discret avec liens */
+        .footer-seo {
+            position: fixed;
+            bottom: 10px;
+            left: 20px;
+            font-size: 9px;
+            color: #1a1a1a;
+            font-family: 'Courier New', monospace;
+        }
+
+        .footer-seo a {
+            color: #222;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-seo a:hover {
+            color: #444;
+        }
     </style>
 </head>
 <body>
     <div class="scanlines"></div>
     <div class="noise"></div>
     
+    <!-- Contenu SEO accessible aux moteurs mais caché visuellement -->
+    <div class="seo-content">
+        <h1>BlackCrow OS - Interface du Vaisseau-Monde</h1>
+        <p>Bienvenue sur BlackCrow OS, l'interface système du Vaisseau-Monde. Explorez un univers de science-fiction immersif à travers des outils interactifs et des expériences narratives uniques.</p>
+        
+        <h2>Outils gratuits disponibles</h2>
+        <ul>
+            <li><a href="./tools/qr-generator-blackcrow.html">Générateur QR Code gratuit</a> - Créez des QR codes personnalisés avec logo</li>
+            <li><a href="./tools/blackcrow-watermark-tool.html">Outil Watermark</a> - Ajoutez des filigranes à vos images</li>
+        </ul>
+        
+        <h2>L'univers du Vaisseau-Monde</h2>
+        <p>Le Vaisseau-Monde est un projet de science-fiction qui explore les thèmes des vaisseaux générationnels, de la mémoire collective et de l'oubli. Découvrez l'histoire sur notre blog, lisez le roman sur Wattpad, ou regardez nos vidéos sur YouTube.</p>
+        
+        <nav>
+            <a href="https://www.vaisseau-monde.fr">Blog Le Vaisseau-Monde</a>
+            <a href="https://www.wattpad.com/story/407419657-le-vaisseau-monde">Lire sur Wattpad</a>
+            <a href="https://www.youtube.com/@VaisseauMonde">Chaîne YouTube</a>
+            <a href="https://www.tiktok.com/@adirawashere">TikTok</a>
+        </nav>
+    </div>
+    
     <main class="container">
         <div class="logo-wrapper" id="logo">
-            <img src="assets/logo-blackcrow.png" alt="" class="logo">
+            <img src="assets/logo-blackcrow.png" alt="BlackCrow OS - Interface du Vaisseau-Monde" class="logo">
         </div>
         
         <div class="terminal" id="terminal">
@@ -144,19 +277,26 @@
     </main>
 
     <!-- Panneau outils cryptiques -->
-    <nav class="tools-panel" aria-label="Outils systeme">
+    <nav class="tools-panel" aria-label="Outils système BlackCrow">
         <!-- Outil Watermark -->
-        <a href="./tools/blackcrow-watermark-tool.html" class="tool-btn" title="Module de marquage">
+        <a href="./tools/blackcrow-watermark-tool.html" class="tool-btn" title="Outil watermark gratuit - Ajouter filigrane image">
             ▓ MARQUE.SYS
             <span class="tool-code">0x7761746572</span>
         </a>
         
         <!-- Outil QR Generator -->
-        <a href="./tools/qr-generator-blackcrow.html" class="tool-btn" title="Generateur de matrices">
+        <a href="./tools/qr-generator-blackcrow.html" class="tool-btn" title="Générateur QR code gratuit avec logo">
             ◰ MATRIX.QR
             <span class="tool-code">0x71726764</span>
         </a>
     </nav>
+
+    <!-- Footer discret avec liens écosystème -->
+    <footer class="footer-seo">
+        <a href="https://www.vaisseau-monde.fr" target="_blank" rel="noopener">blog</a>
+        <a href="https://www.wattpad.com/story/407419657-le-vaisseau-monde" target="_blank" rel="noopener">wattpad</a>
+        <a href="https://www.youtube.com/@VaisseauMonde" target="_blank" rel="noopener">youtube</a>
+    </footer>
     
     <div class="hidden-text" aria-hidden="true">
         <!-- 
