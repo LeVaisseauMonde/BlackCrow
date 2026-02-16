@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Primary Meta Tags -->
+    <title>Créer une page de liens gratuite en ligne | BlackCrow OS - Le Vaisseau-Monde</title>
+    <meta name="title" content="Créer une page de liens gratuite en ligne | BlackCrow OS - Le Vaisseau-Monde">
+    <meta name="description" content="Générateur de page de liens gratuit, sans pub, sans inscription. Créez votre alternative à Linktree en quelques clics. Téléchargez votre page HTML personnalisée.">
+    <meta name="keywords" content="linktree gratuit, page de liens, générateur linktree, alternative linktree gratuit, créer page liens, bio link, lien bio instagram, blackcrow os, sans pub">
+    <meta name="author" content="Le Vaisseau-Monde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://levaisseaumonde.github.io/BlackCrow/tools/link-hub-generator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levaisseaumonde.github.io/BlackCrow/tools/link-hub-generator.html">
+    <meta property="og:title" content="Créer une page de liens gratuite | BlackCrow OS">
+    <meta property="og:description" content="Générateur de page de liens gratuit, sans pub, sans inscription. Alternative à Linktree.">
+    <meta property="og:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta property="og:site_name" content="BlackCrow OS - Le Vaisseau-Monde">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://levaisseaumonde.github.io/BlackCrow/tools/link-hub-generator.html">
+    <meta name="twitter:title" content="Créer une page de liens gratuite | BlackCrow OS">
+    <meta name="twitter:description" content="Générateur de page de liens gratuit, sans pub. Alternative à Linktree.">
+    <meta name="twitter:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta name="twitter:site" content="@adirawashere">
+    <meta name="twitter:creator" content="@adirawashere">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/logo-blackcrow.png">
+    <link rel="apple-touch-icon" href="../assets/logo-blackcrow.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- QRCode.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Générateur de page de liens",
+        "description": "Créez gratuitement votre page de liens personnalisée, alternative à Linktree",
+        "url": "https://levaisseaumonde.github.io/BlackCrow/tools/link-hub-generator.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Le Vaisseau-Monde",
+            "url": "https://www.vaisseau-monde.fr"
+        }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #a0a0a0;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            min-height: 100vh;
+        }
+
+        @media (max-width: 900px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            .preview-panel {
+                display: none;
+            }
+        }
+
+        /* Editor Panel */
+        .editor-panel {
+            background: #0a0a0a;
+            padding: 20px;
+            overflow-y: auto;
+            height: 100vh;
+            border-right: 1px solid #222;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: #444;
+            text-decoration: none;
+            font-size: 11px;
+            margin-bottom: 20px;
+            padding: 8px 0;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            color: #0f0;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .header {
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .header-small {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 3px;
+        }
+
+        .header-sub {
+            font-size: 10px;
+            color: #444;
+        }
+
+        .section {
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .section-header {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #222;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .field input[type="text"],
+        .field input[type="url"],
+        .field textarea,
+        .field select {
+            width: 100%;
+            background: #111;
+            border: 1px solid #333;
+            padding: 10px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            outline: none;
+            border-color: #555;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #444;
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .field select {
+            cursor: pointer;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .field-color {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .field-color input[type="color"] {
+            width: 36px;
+            height: 30px;
+            border: 1px solid #333;
+            background: #111;
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        .field-color input[type="text"] {
+            flex: 1;
+        }
+
+        /* Upload zones */
+        .upload-zone {
+            border: 1px dashed #333;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            position: relative;
+        }
+
+        .upload-zone:hover {
+            border-color: #555;
+        }
+
+        .upload-zone.has-image {
+            padding: 5px;
+        }
+
+        .upload-zone input {
+            display: none;
+        }
+
+        .upload-zone .upload-text {
+            font-size: 10px;
+            color: #555;
+        }
+
+        .upload-zone .upload-icon {
+            font-size: 20px;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .upload-zone img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .upload-zone .clear-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #333;
+            border: none;
+            color: #999;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .upload-zone .clear-btn:hover {
+            background: #a33;
+            color: #fff;
+        }
+
+        /* Links list */
+        .links-list {
+            margin-bottom: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .link-item {
+            background: #111;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .link-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .link-item-title {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .link-item-actions {
+            display: flex;
+            gap: 3px;
+        }
+
+        .link-item-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #555;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: all 0.2s;
+        }
+
+        .link-item-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .link-item-btn.delete:hover {
+            border-color: #a33;
+            color: #f55;
+        }
+
+        .link-item .field {
+            margin-bottom: 6px;
+        }
+
+        .link-item .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-item .field-row-icon {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 8px;
+        }
+
+        /* Icon selector */
+        .icon-select {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .icon-select select {
+            flex: 1;
+        }
+
+        .icon-preview {
+            width: 30px;
+            height: 30px;
+            background: #222;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-preview svg {
+            width: 16px;
+            height: 16px;
+            fill: #888;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            padding: 12px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #252525;
+        }
+
+        .btn-add {
+            background: #1a2a1a;
+            border-color: #2a4a2a;
+        }
+
+        .btn-add:hover {
+            background: #2a3a2a;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #ddd;
+        }
+
+        .btn-preview-mobile {
+            display: none;
+            background: #1a1a3a;
+            border-color: #2a2a5a;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .btn-preview-mobile {
+                display: block;
+            }
+        }
+
+        /* Style presets */
+        .style-presets {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .style-preset {
+            aspect-ratio: 1;
+            border: 2px solid #333;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .style-preset:hover {
+            border-color: #555;
+        }
+
+        .style-preset.active {
+            border-color: #0f0;
+        }
+
+        .style-preset-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            padding: 4px;
+        }
+
+        .style-preset-bar {
+            width: 60%;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        /* Preview Panel */
+        .preview-panel {
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .preview-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            font-size: 10px;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-device-btns {
+            display: flex;
+            gap: 5px;
+        }
+
+        .preview-device-btn {
+            background: #222;
+            border: 1px solid #333;
+            color: #555;
+            padding: 5px 10px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .preview-device-btn.active {
+            border-color: #555;
+            color: #fff;
+        }
+
+        .preview-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .preview-frame {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: width 0.3s;
+        }
+
+        .preview-frame.mobile { width: 375px; }
+        .preview-frame.tablet { width: 600px; }
+        .preview-frame.desktop { width: 100%; max-width: 800px; }
+
+        .preview-iframe {
+            width: 100%;
+            height: 650px;
+            border: none;
+        }
+
+        /* Status bar */
+        .status-bar {
+            font-size: 9px;
+            color: #444;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .status-saved { color: #0a0; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #333;
+            padding: 15px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { color: #6a9bd1; }
+        .footer-links span { color: #333; }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+            z-index: 1000;
+        }
+
+        /* Feedback */
+        .feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0;
+            color: #000;
+            padding: 20px 40px;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+        }
+
+        .feedback.show { opacity: 1; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show { display: flex; }
+
+        .modal-content {
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Font upload info */
+        .font-info {
+            font-size: 9px;
+            color: #444;
+            margin-top: 5px;
+        }
+
+        .font-loaded {
+            color: #0a0;
+        }
+
+        /* QR option */
+        .qr-option {
+            margin-top: -5px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0f0;
+        }
+
+        .checkbox-label span {
+            color: #666;
+        }
+
+        .checkbox-label:hover span {
+            color: #888;
+        }
+
+        .qr-help {
+            font-size: 9px;
+            color: #444;
+            margin-top: 4px;
+            margin-left: 24px;
+        }
+
+        .qr-settings {
+            background: #0d0d0d;
+            padding: 10px;
+            border: 1px solid #222;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="feedback" id="feedback">[ TÉLÉCHARGÉ ]</div>
+
+    <div class="modal" id="previewModal">
+        <button class="modal-close" id="closeModal">✕ FERMER</button>
+        <div class="modal-content">
+            <iframe id="modalIframe" class="preview-iframe"></iframe>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Editor Panel -->
+        <div class="editor-panel">
+            <a href="../" class="back-btn">← RETOUR_SYSTÈME</a>
+            
+            <div class="header">
+                <div class="header-small">// BLACKCROW_OS // LINK_HUB_GENERATOR</div>
+                <h1>> Générateur de Page Liens</h1>
+                <div class="header-sub">Alternative Linktree gratuite — sans pub, sans inscription</div>
+            </div>
+
+            <button class="btn btn-preview-mobile" id="showPreviewBtn">[ VOIR APERÇU ]</button>
+
+            <!-- Profile Section -->
+            <div class="section">
+                <div class="section-header">// PROFIL</div>
+                
+                <div class="field">
+                    <label>> AVATAR</label>
+                    <div class="upload-zone" id="avatarZone">
+                        <input type="file" id="avatarInput" accept="image/*">
+                        <div class="upload-content">
+                            <div class="upload-icon">⬆</div>
+                            <div class="upload-text">Cliquer pour uploader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field qr-option">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enableQR">
+                        <span>> QR CODE INTERACTIF</span>
+                    </label>
+                    <div class="qr-help">L'avatar devient cliquable et affiche un QR code</div>
+                </div>
+
+                <div class="field qr-settings" id="qrSettings" style="display:none;">
+                    <label>> URL DU QR CODE</label>
+                    <input type="url" id="qrUrl" placeholder="https://votre-lien-principal.com">
+                </div>
+
+                <div class="field">
+                    <label>> NOM / PSEUDO</label>
+                    <input type="text" id="profileName" placeholder="Votre nom ou pseudo">
+                </div>
+
+                <div class="field">
+                    <label>> BIO (optionnel)</label>
+                    <textarea id="profileBio" placeholder="Une courte description..."></textarea>
+                </div>
+            </div>
+
+            <!-- Style Section -->
+            <div class="section">
+                <div class="section-header">// STYLE</div>
+
+                <div class="field">
+                    <label>> THÈME RAPIDE</label>
+                </div>
+                <div class="style-presets" id="stylePresets"></div>
+
+                <div class="field">
+                    <label>> IMAGE DE FOND (optionnel)</label>
+                    <div class="upload-zone" id="bgImageZone">
+                        <input type="file" id="bgImageInput" accept="image/*">
+                        <div class="upload-content">
+                            <div class="upload-icon">⬆</div>
+                            <div class="upload-text">Cliquer pour uploader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label>> COULEUR_FOND</label>
+                        <div class="field-color">
+                            <input type="color" id="bgColorPicker" value="#0a0a0a">
+                            <input type="text" id="bgColor" value="#0a0a0a">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>> COULEUR_TEXTE</label>
+                        <div class="field-color">
+                            <input type="color" id="textColorPicker" value="#ffffff">
+                            <input type="text" id="textColor" value="#ffffff">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label>> COULEUR_BOUTONS</label>
+                        <div class="field-color">
+                            <input type="color" id="btnColorPicker" value="#ffffff">
+                            <input type="text" id="btnColor" value="#ffffff">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>> TEXTE_BOUTONS</label>
+                        <div class="field-color">
+                            <input type="color" id="btnTextColorPicker" value="#000000">
+                            <input type="text" id="btnTextColor" value="#000000">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label>> STYLE_BOUTONS</label>
+                        <select id="btnStyle">
+                            <option value="rounded">Arrondis</option>
+                            <option value="square">Carrés</option>
+                            <option value="pill">Pilules</option>
+                            <option value="outline">Contours</option>
+                            <option value="shadow">Ombres</option>
+                            <option value="glass">Verre</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>> POLICE</label>
+                        <select id="fontFamily">
+                            <option value="system-ui, sans-serif">System</option>
+                            <option value="'Courier New', monospace">Mono</option>
+                            <option value="Georgia, serif">Serif</option>
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="custom">Perso...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field" id="customFontField" style="display:none;">
+                    <label>> POLICE PERSONNALISÉE (.ttf, .woff, .woff2)</label>
+                    <div class="upload-zone" id="fontZone">
+                        <input type="file" id="fontInput" accept=".ttf,.woff,.woff2">
+                        <div class="upload-content">
+                            <div class="upload-icon">Aa</div>
+                            <div class="upload-text">Uploader une police</div>
+                        </div>
+                    </div>
+                    <div class="font-info" id="fontInfo"></div>
+                </div>
+            </div>
+
+            <!-- Links Section -->
+            <div class="section">
+                <div class="section-header">// LIENS</div>
+
+                <div class="links-list" id="linksList"></div>
+
+                <button class="btn btn-add" id="addLinkBtn">[ + AJOUTER UN LIEN ]</button>
+            </div>
+
+            <!-- SEO Section -->
+            <div class="section">
+                <div class="section-header">// SEO (optionnel)</div>
+
+                <div class="field">
+                    <label>> TITRE_PAGE</label>
+                    <input type="text" id="pageTitle" placeholder="Mon nom | Mes liens">
+                </div>
+
+                <div class="field">
+                    <label>> DESCRIPTION</label>
+                    <textarea id="pageDescription" placeholder="Retrouvez tous mes liens..."></textarea>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <button class="btn btn-primary" id="downloadBtn">⬇ TÉLÉCHARGER MA PAGE HTML</button>
+
+            <div class="status-bar">
+                <span id="statusText" class="status-saved">● Sauvegarde auto</span>
+                <span id="lastSaved">-</span>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <a href="https://www.vaisseau-monde.fr" target="_blank" rel="noopener">Blog</a>
+                    <span>•</span>
+                    <a href="https://levaisseaumonde.github.io/BlackCrow/" target="_blank" rel="noopener">BlackCrow OS</a>
+                    <span>•</span>
+                    <a href="https://www.youtube.com/@VaisseauMonde" target="_blank" rel="noopener">YouTube</a>
+                </div>
+                <div>// LA TERRE EXISTE // QLVVP 🖤</div>
+            </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <div class="preview-header">
+                <span>// APERÇU_EN_DIRECT</span>
+                <div class="preview-device-btns">
+                    <button class="preview-device-btn active" data-device="mobile">Mobile</button>
+                    <button class="preview-device-btn" data-device="tablet">Tablette</button>
+                    <button class="preview-device-btn" data-device="desktop">Desktop</button>
+                </div>
+            </div>
+            <div class="preview-container">
+                <div class="preview-frame mobile" id="previewFrame">
+                    <iframe id="previewIframe" class="preview-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Social icons SVG (simple, sobres)
+        const socialIcons = {
+            none: { name: 'Aucune', svg: '' },
+            website: { name: 'Site web', svg: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"/></svg>' },
+            youtube: { name: 'YouTube', svg: '<svg viewBox="0 0 24 24"><path d="M23 9.71a8.5 8.5 0 0 0-.91-4.13 2.92 2.92 0 0 0-1.72-1.12A57.52 57.52 0 0 0 12 4a57.52 57.52 0 0 0-8.37.46 2.92 2.92 0 0 0-1.72 1.12A8.5 8.5 0 0 0 1 9.71a49.56 49.56 0 0 0 0 4.58 8.5 8.5 0 0 0 .91 4.13 2.92 2.92 0 0 0 1.72 1.12A57.52 57.52 0 0 0 12 20a57.52 57.52 0 0 0 8.37-.46 2.92 2.92 0 0 0 1.72-1.12 8.5 8.5 0 0 0 .91-4.13 49.56 49.56 0 0 0 0-4.58zM9.74 14.85V9.15l5.53 2.85z" fill="currentColor"/></svg>' },
+            instagram: { name: 'Instagram', svg: '<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>' },
+            twitter: { name: 'X / Twitter', svg: '<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/></svg>' },
+            tiktok: { name: 'TikTok', svg: '<svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/></svg>' },
+            facebook: { name: 'Facebook', svg: '<svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+            linkedin: { name: 'LinkedIn', svg: '<svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="2"/><rect x="2" y="9" width="4" height="12" fill="currentColor"/><circle cx="4" cy="4" r="2" fill="currentColor"/></svg>' },
+            reddit: { name: 'Reddit', svg: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 13.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm-7 0c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm.5 3c0 0 1.5 1.5 4 1.5s4-1.5 4-1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="17" cy="8" r="1.5" fill="currentColor"/><path d="M14 7c-1-2-4-2-4-2s-1 0-2 1" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>' },
+            twitch: { name: 'Twitch', svg: '<svg viewBox="0 0 24 24"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+            discord: { name: 'Discord', svg: '<svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" fill="currentColor"/></svg>' },
+            github: { name: 'GitHub', svg: '<svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="currentColor"/></svg>' },
+            spotify: { name: 'Spotify', svg: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 15c3-1 6-1 8.5.5M7 12c4-1.5 8-1.5 11 .5M6.5 9c4.5-1.5 9.5-1.5 13 1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>' },
+            email: { name: 'Email', svg: '<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m22 6-10 7L2 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>' },
+            snapchat: { name: 'Snapchat', svg: '<svg viewBox="0 0 24 24"><path d="M12 2c-3 0-5.5 2.5-5.5 5.5v2c-1 .5-2 1-2 2s1.5 1 1.5 1c0 1-1 2-2 3s1 2 3 2c0 1 0 2 .5 2.5s2.5 1 4.5 1 4-.5 4.5-1 .5-1.5.5-2.5c2 0 4-1 3-2s-2-2-2-3c0 0 1.5 0 1.5-1s-1-1.5-2-2v-2C17.5 4.5 15 2 12 2z" fill="none" stroke="currentColor" stroke-width="2"/></svg>' },
+            pinterest: { name: 'Pinterest', svg: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6c-3 0-5 2.5-5 5 0 2 1 3.5 2.5 4-.3-1 0-2 .5-3l1-3c-.3-.5-.3-1.5 0-2 .5-1 2-1 2.5.5.3 1-.2 2.5-.5 4-.2 1 .3 2 1.5 2 2 0 3-2.5 3-5 0-2.5-2-4.5-5-4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>' },
+            wattpad: { name: 'Wattpad', svg: '<svg viewBox="0 0 24 24"><path d="M12 3L4 7v10l8 4 8-4V7l-8-4zm0 2l6 3-6 3-6-3 6-3zm-6 5l6 3v6l-6-3v-6zm12 0v6l-6 3v-6l6-3z" fill="currentColor"/></svg>' },
+            patreon: { name: 'Patreon', svg: '<svg viewBox="0 0 24 24"><circle cx="14" cy="9" r="6" fill="currentColor"/><rect x="3" y="3" width="3" height="18" fill="currentColor"/></svg>' },
+            kofi: { name: 'Ko-fi', svg: '<svg viewBox="0 0 24 24"><path d="M12 21c-5 0-9-3-9-7V8h18v6c0 1.5-.5 2.5-1.5 3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 8v3c2 0 3-1 3-3s-1-3-3-3h-1" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 12l1.5 2 3-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
+            tipeee: { name: 'Tipeee', svg: '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>' },
+        };
+
+        // Style presets
+        const stylePresets = [
+            { name: 'Noir', bg: '#0a0a0a', text: '#ffffff', btn: '#ffffff', btnText: '#000000' },
+            { name: 'Blanc', bg: '#ffffff', text: '#000000', btn: '#000000', btnText: '#ffffff' },
+            { name: 'Ocean', bg: '#0f172a', text: '#e2e8f0', btn: '#3b82f6', btnText: '#ffffff' },
+            { name: 'Forêt', bg: '#14532d', text: '#dcfce7', btn: '#22c55e', btnText: '#000000' },
+            { name: 'Sunset', bg: '#7c2d12', text: '#fff7ed', btn: '#fb923c', btnText: '#000000' },
+            { name: 'Violet', bg: '#2e1065', text: '#f3e8ff', btn: '#a855f7', btnText: '#ffffff' },
+            { name: 'Rose', bg: '#500724', text: '#fce7f3', btn: '#ec4899', btnText: '#ffffff' },
+            { name: 'Cyber', bg: '#000000', text: '#00ff00', btn: '#00ff00', btnText: '#000000' },
+            { name: 'Crème', bg: '#faf7f2', text: '#44403c', btn: '#44403c', btnText: '#faf7f2' },
+            { name: 'Sky', bg: '#0c4a6e', text: '#e0f2fe', btn: '#38bdf8', btnText: '#000000' },
+        ];
+
+        // State
+        let links = [];
+        let avatarBase64 = '';
+        let bgImageBase64 = '';
+        let customFontBase64 = '';
+        let customFontName = '';
+        let qrEnabled = false;
+        let qrUrl = '';
+
+        // Elements
+        const els = {
+            profileName: document.getElementById('profileName'),
+            profileBio: document.getElementById('profileBio'),
+            avatarZone: document.getElementById('avatarZone'),
+            avatarInput: document.getElementById('avatarInput'),
+            enableQR: document.getElementById('enableQR'),
+            qrSettings: document.getElementById('qrSettings'),
+            qrUrl: document.getElementById('qrUrl'),
+            bgImageZone: document.getElementById('bgImageZone'),
+            bgImageInput: document.getElementById('bgImageInput'),
+            bgColor: document.getElementById('bgColor'),
+            bgColorPicker: document.getElementById('bgColorPicker'),
+            textColor: document.getElementById('textColor'),
+            textColorPicker: document.getElementById('textColorPicker'),
+            btnColor: document.getElementById('btnColor'),
+            btnColorPicker: document.getElementById('btnColorPicker'),
+            btnTextColor: document.getElementById('btnTextColor'),
+            btnTextColorPicker: document.getElementById('btnTextColorPicker'),
+            btnStyle: document.getElementById('btnStyle'),
+            fontFamily: document.getElementById('fontFamily'),
+            customFontField: document.getElementById('customFontField'),
+            fontZone: document.getElementById('fontZone'),
+            fontInput: document.getElementById('fontInput'),
+            fontInfo: document.getElementById('fontInfo'),
+            pageTitle: document.getElementById('pageTitle'),
+            pageDescription: document.getElementById('pageDescription'),
+            linksList: document.getElementById('linksList'),
+            addLinkBtn: document.getElementById('addLinkBtn'),
+            downloadBtn: document.getElementById('downloadBtn'),
+            previewIframe: document.getElementById('previewIframe'),
+            previewFrame: document.getElementById('previewFrame'),
+            stylePresets: document.getElementById('stylePresets'),
+            feedback: document.getElementById('feedback'),
+            lastSaved: document.getElementById('lastSaved'),
+            showPreviewBtn: document.getElementById('showPreviewBtn'),
+            previewModal: document.getElementById('previewModal'),
+            closeModal: document.getElementById('closeModal'),
+            modalIframe: document.getElementById('modalIframe'),
+        };
+
+        // Compress and convert image to base64
+        function compressImage(file, maxSize = 300) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let { width, height } = img;
+                        
+                        if (width > height) {
+                            if (width > maxSize) {
+                                height = (height * maxSize) / width;
+                                width = maxSize;
+                            }
+                        } else {
+                            if (height > maxSize) {
+                                width = (width * maxSize) / height;
+                                height = maxSize;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', 0.8));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Compress background image (larger)
+        function compressBgImage(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let { width, height } = img;
+                        const maxSize = 1200;
+                        
+                        if (width > maxSize || height > maxSize) {
+                            if (width > height) {
+                                height = (height * maxSize) / width;
+                                width = maxSize;
+                            } else {
+                                width = (width * maxSize) / height;
+                                height = maxSize;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', 0.7));
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Setup upload zone
+        function setupUploadZone(zone, input, onLoad, isBackground = false) {
+            zone.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('clear-btn')) {
+                    input.click();
+                }
+            });
+            
+            input.addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const base64 = isBackground ? await compressBgImage(file) : await compressImage(file);
+                    onLoad(base64);
+                    zone.classList.add('has-image');
+                    zone.innerHTML = `
+                        <button class="clear-btn" onclick="event.stopPropagation()">✕</button>
+                        <img src="${base64}" alt="Preview">
+                    `;
+                    zone.querySelector('.clear-btn').addEventListener('click', () => {
+                        onLoad('');
+                        zone.classList.remove('has-image');
+                        zone.innerHTML = `
+                            <input type="file" id="${input.id}" accept="image/*">
+                            <div class="upload-content">
+                                <div class="upload-icon">⬆</div>
+                                <div class="upload-text">Cliquer pour uploader</div>
+                            </div>
+                        `;
+                        setupUploadZone(zone, zone.querySelector('input'), onLoad, isBackground);
+                    });
+                    updatePreview();
+                    saveConfig();
+                }
+            });
+        }
+
+        // Setup font upload
+        function setupFontUpload() {
+            els.fontZone.addEventListener('click', () => els.fontInput.click());
+            
+            els.fontInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        customFontBase64 = event.target.result;
+                        customFontName = file.name.replace(/\.[^/.]+$/, '');
+                        els.fontInfo.textContent = `✓ ${file.name} chargée`;
+                        els.fontInfo.classList.add('font-loaded');
+                        updatePreview();
+                        saveConfig();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            els.fontFamily.addEventListener('change', () => {
+                els.customFontField.style.display = els.fontFamily.value === 'custom' ? 'block' : 'none';
+                updatePreview();
+                saveConfig();
+            });
+        }
+
+        // Init style presets
+        function initStylePresets() {
+            els.stylePresets.innerHTML = stylePresets.map((p, i) => `
+                <div class="style-preset" data-preset="${i}" title="${p.name}">
+                    <div class="style-preset-inner" style="background:${p.bg}">
+                        <div class="style-preset-bar" style="background:${p.btn}"></div>
+                        <div class="style-preset-bar" style="background:${p.btn}"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            els.stylePresets.querySelectorAll('.style-preset').forEach(el => {
+                el.addEventListener('click', () => {
+                    const p = stylePresets[el.dataset.preset];
+                    els.bgColor.value = p.bg; els.bgColorPicker.value = p.bg;
+                    els.textColor.value = p.text; els.textColorPicker.value = p.text;
+                    els.btnColor.value = p.btn; els.btnColorPicker.value = p.btn;
+                    els.btnTextColor.value = p.btnText; els.btnTextColorPicker.value = p.btnText;
+                    els.stylePresets.querySelectorAll('.style-preset').forEach(x => x.classList.remove('active'));
+                    el.classList.add('active');
+                    updatePreview();
+                    saveConfig();
+                });
+            });
+        }
+
+        // Sync color picker
+        function syncColor(picker, input) {
+            picker.addEventListener('input', () => { input.value = picker.value; updatePreview(); saveConfig(); });
+            input.addEventListener('input', () => { if (/^#[0-9A-Fa-f]{6}$/.test(input.value)) picker.value = input.value; updatePreview(); saveConfig(); });
+        }
+
+        // Render links
+        function renderLinks() {
+            const iconOptions = Object.entries(socialIcons).map(([key, val]) => 
+                `<option value="${key}">${val.name}</option>`
+            ).join('');
+
+            els.linksList.innerHTML = links.map((link, i) => `
+                <div class="link-item" data-index="${i}">
+                    <div class="link-item-header">
+                        <span class="link-item-title">LIEN #${i + 1}</span>
+                        <div class="link-item-actions">
+                            <button class="link-item-btn move-up" ${i === 0 ? 'disabled' : ''}>↑</button>
+                            <button class="link-item-btn move-down" ${i === links.length - 1 ? 'disabled' : ''}>↓</button>
+                            <button class="link-item-btn delete">✕</button>
+                        </div>
+                    </div>
+                    <div class="field field-row-icon">
+                        <div class="icon-select">
+                            <select class="link-icon">${iconOptions}</select>
+                        </div>
+                        <input type="text" class="link-title" value="${escapeHtml(link.title)}" placeholder="Titre">
+                    </div>
+                    <div class="field">
+                        <input type="url" class="link-url" value="${escapeHtml(link.url)}" placeholder="https://...">
+                    </div>
+                </div>
+            `).join('');
+
+            // Bind events
+            els.linksList.querySelectorAll('.link-item').forEach((item, index) => {
+                const iconSelect = item.querySelector('.link-icon');
+                iconSelect.value = links[index].icon || 'none';
+                
+                iconSelect.addEventListener('change', (e) => { links[index].icon = e.target.value; updatePreview(); saveConfig(); });
+                item.querySelector('.link-title').addEventListener('input', (e) => { links[index].title = e.target.value; updatePreview(); saveConfig(); });
+                item.querySelector('.link-url').addEventListener('input', (e) => { links[index].url = e.target.value; updatePreview(); saveConfig(); });
+                item.querySelector('.move-up').addEventListener('click', () => { if (index > 0) { [links[index], links[index-1]] = [links[index-1], links[index]]; renderLinks(); updatePreview(); saveConfig(); }});
+                item.querySelector('.move-down').addEventListener('click', () => { if (index < links.length-1) { [links[index], links[index+1]] = [links[index+1], links[index]]; renderLinks(); updatePreview(); saveConfig(); }});
+                item.querySelector('.delete').addEventListener('click', () => { links.splice(index, 1); renderLinks(); updatePreview(); saveConfig(); });
+            });
+        }
+
+        // Get button style CSS
+        function getButtonStyleCSS(isOutline) {
+            const style = els.btnStyle.value;
+            const base = { rounded: '12px', square: '0', pill: '50px', outline: '12px', shadow: '12px', glass: '12px' }[style] || '12px';
+            let css = `border-radius: ${base};`;
+            if (style === 'outline') css += ` background: transparent !important; border: 2px solid ${els.btnColor.value};`;
+            if (style === 'shadow') css += ' box-shadow: 0 4px 15px rgba(0,0,0,0.3);';
+            if (style === 'glass') css += ' background: rgba(255,255,255,0.1) !important; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);';
+            return css;
+        }
+
+        // Generate QR code as base64
+        async function generateQRBase64(text) {
+            return new Promise(resolve => {
+                const tempDiv = document.createElement('div');
+                tempDiv.style.cssText = 'position:absolute;left:-9999px;';
+                document.body.appendChild(tempDiv);
+                
+                new QRCode(tempDiv, {
+                    text: text,
+                    width: 100,
+                    height: 100,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.L
+                });
+                
+                setTimeout(() => {
+                    const canvas = tempDiv.querySelector('canvas');
+                    const img = tempDiv.querySelector('img');
+                    let src = '';
+                    
+                    if (canvas) {
+                        src = canvas.toDataURL('image/png');
+                    } else if (img && img.src) {
+                        src = img.src;
+                    }
+                    
+                    document.body.removeChild(tempDiv);
+                    resolve(src);
+                }, 150);
+            });
+        }
+
+        // Generate HTML
+        async function generateHTML(forDownload = false) {
+            const name = els.profileName.value || 'Mon profil';
+            const bio = els.profileBio.value;
+            const title = els.pageTitle.value || name + ' | Mes liens';
+            const description = els.pageDescription.value || 'Retrouvez tous mes liens.';
+            const isOutline = els.btnStyle.value === 'outline';
+            const isGlass = els.btnStyle.value === 'glass';
+            const btnCSS = getButtonStyleCSS(isOutline);
+            const qrActive = els.enableQR.checked && els.qrUrl.value;
+            
+            // Generate QR code base64 if needed
+            let qrBase64 = '';
+            if (qrActive) {
+                qrBase64 = await generateQRBase64(els.qrUrl.value);
+            }
+            
+            const fontFace = (els.fontFamily.value === 'custom' && customFontBase64) ? `
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('${customFontBase64}');
+        }` : '';
+            
+            const fontStack = (els.fontFamily.value === 'custom' && customFontBase64) ? "'CustomFont', system-ui, sans-serif" : els.fontFamily.value;
+
+            const bgStyle = bgImageBase64 
+                ? `background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${bgImageBase64}') center/cover fixed;`
+                : `background: ${els.bgColor.value};`;
+
+            const linksHTML = links.filter(l => l.title && l.url).map(link => {
+                const icon = link.icon && link.icon !== 'none' && socialIcons[link.icon] 
+                    ? `<span class="link-icon">${socialIcons[link.icon].svg}</span>` 
+                    : '';
+                return `
+        <a href="${escapeHtml(link.url)}" class="link-btn" target="_blank" rel="noopener">${icon}<span>${escapeHtml(link.title)}</span></a>`;
+            }).join('');
+
+            // QR code generation script
+            const qrScript = qrActive ? `
+    <script>
+    (function(){
+        const avatar = document.querySelector('.avatar-wrap');
+        const qrWrap = document.querySelector('.qr-wrap');
+        if(avatar && qrWrap) {
+            avatar.addEventListener('click', function() {
+                avatar.style.display = 'none';
+                qrWrap.style.display = 'block';
+            });
+            qrWrap.addEventListener('click', function() {
+                qrWrap.style.display = 'none';
+                avatar.style.display = 'block';
+            });
+        }
+    })();
+    <\/script>` : '';
+
+            const avatarHTML = avatarBase64 
+                ? (qrActive 
+                    ? `<div class="avatar-wrap" title="Cliquer pour voir le QR code"><img src="${avatarBase64}" alt="${escapeHtml(name)}" class="avatar"></div>
+        <div class="qr-wrap" style="display:none;" title="Cliquer pour revenir à l'avatar"><img src="${qrBase64}" alt="QR Code" class="qr-img"/></div>`
+                    : `<img src="${avatarBase64}" alt="${escapeHtml(name)}" class="avatar">`)
+                : (qrActive 
+                    ? `<div class="qr-wrap"><img src="${qrBase64}" alt="QR Code" class="qr-img"/></div>` 
+                    : '');
+
+            const bioHTML = bio ? `<p class="bio">${escapeHtml(bio)}</p>` : '';
+            const creditHTML = forDownload ? `
+    <footer class="credit">
+        <a href="https://levaisseaumonde.github.io/BlackCrow/" target="_blank" rel="noopener">Créé avec BlackCrow OS</a>
+    </footer>` : '';
+
+            const qrStyles = qrActive ? `
+        .avatar-wrap, .qr-wrap { cursor: pointer; transition: transform 0.3s; }
+        .avatar-wrap:hover, .qr-wrap:hover { transform: scale(1.05); }
+        .qr-img { width: 100px; height: 100px; border-radius: 8px; }` : '';
+
+            return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${escapeHtml(title)}</title>
+    <meta name="description" content="${escapeHtml(description)}">
+    <meta property="og:title" content="${escapeHtml(title)}">
+    <meta property="og:description" content="${escapeHtml(description)}">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="${escapeHtml(title)}">
+    <meta name="twitter:description" content="${escapeHtml(description)}">
+    <style>${fontFace}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: ${fontStack};
+            ${bgStyle}
+            color: ${els.textColor.value};
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+        .container { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; border: 3px solid rgba(255,255,255,0.2); }
+        .name { font-size: 24px; font-weight: bold; margin-bottom: 8px; text-align: center; }
+        .bio { font-size: 14px; opacity: 0.85; margin-bottom: 28px; text-align: center; line-height: 1.5; max-width: 300px; }
+        .links { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            background: ${isOutline || isGlass ? 'transparent' : els.btnColor.value};
+            color: ${isOutline ? els.btnColor.value : (isGlass ? els.textColor.value : els.btnTextColor.value)};
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: transform 0.2s, opacity 0.2s;
+            ${btnCSS}
+        }
+        .link-btn:hover { transform: scale(1.03); opacity: 0.9; }
+        .link-btn .link-icon { display: flex; width: 20px; height: 20px; }
+        .link-btn .link-icon svg { width: 100%; height: 100%; }
+        .credit { margin-top: 50px; font-size: 11px; opacity: 0.4; }
+        .credit a { color: inherit; text-decoration: none; }
+        .credit a:hover { text-decoration: underline; }${qrStyles}
+    </style>
+</head>
+<body>
+    <div class="container">
+        ${avatarHTML}
+        <h1 class="name">${escapeHtml(name)}</h1>
+        ${bioHTML}
+        <div class="links">${linksHTML}
+        </div>
+    </div>${creditHTML}${qrScript}
+</body>
+</html>`;
+        }
+
+        // Update preview
+        async function updatePreview() {
+            const html = await generateHTML(false);
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            els.previewIframe.src = url;
+            els.modalIframe.src = url;
+        }
+
+        // Download
+        els.downloadBtn.addEventListener('click', async () => {
+            const html = await generateHTML(true);
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = (els.profileName.value || 'mes-liens').toLowerCase().replace(/[^a-z0-9]/g, '-') + '.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            els.feedback.textContent = '[ TÉLÉCHARGÉ ]';
+            els.feedback.classList.add('show');
+            setTimeout(() => els.feedback.classList.remove('show'), 1500);
+        });
+
+        // Device buttons
+        document.querySelectorAll('.preview-device-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.preview-device-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                els.previewFrame.className = 'preview-frame ' + btn.dataset.device;
+            });
+        });
+
+        // Mobile modal
+        els.showPreviewBtn.addEventListener('click', () => els.previewModal.classList.add('show'));
+        els.closeModal.addEventListener('click', () => els.previewModal.classList.remove('show'));
+
+        // Add link
+        els.addLinkBtn.addEventListener('click', () => {
+            links.push({ title: '', url: '', icon: 'none' });
+            renderLinks();
+            saveConfig();
+        });
+
+        // Save config
+        function saveConfig() {
+            const config = {
+                profileName: els.profileName.value,
+                profileBio: els.profileBio.value,
+                avatarBase64,
+                bgImageBase64,
+                bgColor: els.bgColor.value,
+                textColor: els.textColor.value,
+                btnColor: els.btnColor.value,
+                btnTextColor: els.btnTextColor.value,
+                btnStyle: els.btnStyle.value,
+                fontFamily: els.fontFamily.value,
+                customFontBase64,
+                customFontName,
+                pageTitle: els.pageTitle.value,
+                pageDescription: els.pageDescription.value,
+                enableQR: els.enableQR.checked,
+                qrUrl: els.qrUrl.value,
+                links
+            };
+            localStorage.setItem('blackcrow_linkhub_v2', JSON.stringify(config));
+            els.lastSaved.textContent = new Date().toLocaleTimeString('fr-FR');
+        }
+
+        // Load config
+        function loadConfig() {
+            const saved = localStorage.getItem('blackcrow_linkhub_v2');
+            if (saved) {
+                const c = JSON.parse(saved);
+                els.profileName.value = c.profileName || '';
+                els.profileBio.value = c.profileBio || '';
+                avatarBase64 = c.avatarBase64 || '';
+                bgImageBase64 = c.bgImageBase64 || '';
+                els.bgColor.value = c.bgColor || '#0a0a0a'; els.bgColorPicker.value = c.bgColor || '#0a0a0a';
+                els.textColor.value = c.textColor || '#ffffff'; els.textColorPicker.value = c.textColor || '#ffffff';
+                els.btnColor.value = c.btnColor || '#ffffff'; els.btnColorPicker.value = c.btnColor || '#ffffff';
+                els.btnTextColor.value = c.btnTextColor || '#000000'; els.btnTextColorPicker.value = c.btnTextColor || '#000000';
+                els.btnStyle.value = c.btnStyle || 'rounded';
+                els.fontFamily.value = c.fontFamily || 'system-ui, sans-serif';
+                customFontBase64 = c.customFontBase64 || '';
+                customFontName = c.customFontName || '';
+                els.pageTitle.value = c.pageTitle || '';
+                els.pageDescription.value = c.pageDescription || '';
+                els.enableQR.checked = c.enableQR || false;
+                els.qrUrl.value = c.qrUrl || '';
+                els.qrSettings.style.display = c.enableQR ? 'block' : 'none';
+                links = c.links || [];
+                
+                if (avatarBase64) {
+                    els.avatarZone.classList.add('has-image');
+                    els.avatarZone.innerHTML = `<button class="clear-btn">✕</button><img src="${avatarBase64}" alt="Avatar">`;
+                }
+                if (bgImageBase64) {
+                    els.bgImageZone.classList.add('has-image');
+                    els.bgImageZone.innerHTML = `<button class="clear-btn">✕</button><img src="${bgImageBase64}" alt="Fond">`;
+                }
+                if (els.fontFamily.value === 'custom') {
+                    els.customFontField.style.display = 'block';
+                    if (customFontName) {
+                        els.fontInfo.textContent = `✓ ${customFontName} chargée`;
+                        els.fontInfo.classList.add('font-loaded');
+                    }
+                }
+            } else {
+                links = [
+                    { title: 'Mon site', url: '', icon: 'website' },
+                    { title: 'YouTube', url: '', icon: 'youtube' },
+                    { title: 'Instagram', url: '', icon: 'instagram' }
+                ];
+            }
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Simple QR Code generator (basic version using SVG)
+        // Bind inputs
+        [els.profileName, els.profileBio, els.pageTitle, els.pageDescription, els.qrUrl].forEach(el => {
+            el.addEventListener('input', () => { updatePreview(); saveConfig(); });
+        });
+        els.btnStyle.addEventListener('change', () => { updatePreview(); saveConfig(); });
+
+        // QR code toggle
+        els.enableQR.addEventListener('change', () => {
+            els.qrSettings.style.display = els.enableQR.checked ? 'block' : 'none';
+            updatePreview();
+            saveConfig();
+        });
+
+        // Init
+        syncColor(els.bgColorPicker, els.bgColor);
+        syncColor(els.textColorPicker, els.textColor);
+        syncColor(els.btnColorPicker, els.btnColor);
+        syncColor(els.btnTextColorPicker, els.btnTextColor);
+        setupUploadZone(els.avatarZone, els.avatarInput, (b64) => { avatarBase64 = b64; });
+        setupUploadZone(els.bgImageZone, els.bgImageInput, (b64) => { bgImageBase64 = b64; }, true);
+        setupFontUpload();
+        initStylePresets();
+        loadConfig();
+        renderLinks();
+        updatePreview();
+    </script>
+</body>
+</html>
