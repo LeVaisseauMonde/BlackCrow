@@ -19,9 +19,7 @@ La fiction rencontre la réalité.
 ---
 
 ## 🛠️ Outils disponibles
-
 ### [MATRIX.QR — Générateur QR Code](https://levaisseaumonde.github.io/BlackCrow/tools/qr-generator-blackcrow.html)
-
 Créez des QR codes personnalisés gratuitement :
 - Ajout de logo au centre
 - Style unique avec effet "corruption"
@@ -29,12 +27,18 @@ Créez des QR codes personnalisés gratuitement :
 - Aucune inscription requise
 
 ### [MARQUE.SYS — Outil Watermark](https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html)
-
 Ajoutez un filigrane à vos images :
 - 9 positions de placement
 - Opacité et taille ajustables
 - Métadonnées optionnelles
 - **100% local** — vos images ne quittent jamais votre navigateur
+
+### [TREND.WDG — Générateur Widget Tendance](https://levaisseaumonde.github.io/BlackCrow/tools/trending-widget-generator-blackcrow.html)
+Créez des widgets "En tendance" pour Blogger :
+- Aperçu en temps réel
+- Couleurs, tailles et styles personnalisables
+- Code HTML/CSS prêt à copier-coller
+- Sauvegarde automatique des paramètres
 
 ---
 
