@@ -332,7 +332,6 @@
             color: #333;
         }
 
-        /* Scanlines overlay */
         .scanlines {
             position: fixed;
             top: 0;
@@ -348,6 +347,22 @@
                 transparent 2px
             );
             z-index: 1000;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: #444;
+            text-decoration: none;
+            font-size: 11px;
+            margin-bottom: 20px;
+            padding: 8px 0;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            color: #0f0;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
 
         .copy-feedback {
@@ -441,6 +456,8 @@
     <div class="copy-feedback" id="copyFeedback">[ CODE COPIÉ ]</div>
 
     <div class="container">
+        <a href="../" class="back-btn">← RETOUR_SYSTÈME</a>
+        
         <div class="header">
             <div class="header-small">// BLACKCROW_OS // WIDGET_GENERATOR</div>
             <h1>> Générateur Widget Tendance</h1>
