@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Primary Meta Tags -->
+    <title>Convertisseur Images JPG 720p Gratuit | BlackCrow OS - Le Vaisseau-Monde</title>
+    <meta name="title" content="Convertisseur Images JPG 720p Gratuit | BlackCrow OS - Le Vaisseau-Monde">
+    <meta name="description" content="Convertissez vos images en JPG avec redimensionnement automatique à 720 pixels max. Gratuit, sans pub, sans inscription. Traitement 100% local dans votre navigateur.">
+    <meta name="keywords" content="convertir image jpg, redimensionner image, compresser image, 720p, convertisseur image gratuit, sans inscription, blackcrow os, outil image en ligne">
+    <meta name="author" content="Le Vaisseau-Monde">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://levaisseaumonde.github.io/BlackCrow/tools/image-converter-720.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://levaisseaumonde.github.io/BlackCrow/tools/image-converter-720.html">
+    <meta property="og:title" content="Convertisseur Images JPG 720p Gratuit | BlackCrow OS">
+    <meta property="og:description" content="Convertissez vos images en JPG 720p max. Gratuit, sans pub, 100% local.">
+    <meta property="og:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta property="og:site_name" content="BlackCrow OS - Le Vaisseau-Monde">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://levaisseaumonde.github.io/BlackCrow/tools/image-converter-720.html">
+    <meta name="twitter:title" content="Convertisseur Images JPG 720p Gratuit | BlackCrow OS">
+    <meta name="twitter:description" content="Convertissez vos images en JPG 720p max. Gratuit, sans pub.">
+    <meta name="twitter:image" content="https://levaisseaumonde.github.io/BlackCrow/assets/logo-blackcrow.png">
+    <meta name="twitter:site" content="@adirawashere">
+    <meta name="twitter:creator" content="@adirawashere">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/logo-blackcrow.png">
+    <link rel="apple-touch-icon" href="../assets/logo-blackcrow.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Convertisseur Images JPG 720p",
+        "description": "Convertissez vos images en JPG avec redimensionnement automatique à 720 pixels maximum",
+        "url": "https://levaisseaumonde.github.io/BlackCrow/tools/image-converter-720.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Le Vaisseau-Monde",
+            "url": "https://www.vaisseau-monde.fr"
+        }
+    }
+    </script>
+
+    <!-- JSZip for downloading multiple files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #a0a0a0;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: #444;
+            text-decoration: none;
+            font-size: 11px;
+            margin-bottom: 20px;
+            padding: 8px 0;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .back-btn:hover {
+            color: #0f0;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .header {
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header-small {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+
+        .header-sub {
+            font-size: 10px;
+            color: #444;
+        }
+
+        /* Drop zone */
+        .drop-zone {
+            border: 2px dashed #333;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.drag-over {
+            border-color: #0f0;
+            background: rgba(0, 255, 0, 0.02);
+        }
+
+        .drop-zone-icon {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .drop-zone-text {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .drop-zone-hint {
+            font-size: 10px;
+            color: #333;
+        }
+
+        .drop-zone input {
+            display: none;
+        }
+
+        /* Settings */
+        .settings {
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .settings-header {
+            font-size: 10px;
+            color: #555;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #222;
+        }
+
+        .settings-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .setting-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .setting-item label {
+            font-size: 10px;
+            color: #666;
+        }
+
+        .setting-item input[type="number"] {
+            width: 70px;
+            background: #111;
+            border: 1px solid #333;
+            padding: 8px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .setting-item input[type="range"] {
+            width: 100px;
+            accent-color: #0f0;
+        }
+
+        .setting-item select {
+            background: #111;
+            border: 1px solid #333;
+            padding: 8px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+        }
+
+        .setting-item input[type="text"] {
+            background: #111;
+            border: 1px solid #333;
+            padding: 8px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .settings-hint {
+            font-size: 9px;
+            color: #444;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid #222;
+        }
+
+        .settings-hint span {
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .quality-value {
+            font-size: 11px;
+            color: #0f0;
+            min-width: 35px;
+        }
+
+        /* Images list */
+        .images-section {
+            border: 1px solid #333;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .images-section.has-images {
+            display: block;
+        }
+
+        .images-header {
+            font-size: 10px;
+            color: #555;
+            padding: 15px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .images-count {
+            color: #0f0;
+        }
+
+        .clear-all-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #666;
+            padding: 5px 10px;
+            font-size: 9px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .clear-all-btn:hover {
+            border-color: #a33;
+            color: #f55;
+        }
+
+        .images-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .image-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 15px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .image-item:last-child {
+            border-bottom: none;
+        }
+
+        .image-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            background: #111;
+            border: 1px solid #333;
+        }
+
+        .image-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .image-name {
+            font-size: 11px;
+            color: #888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 3px;
+        }
+
+        .image-name .new-name {
+            color: #0f0;
+        }
+
+        .image-meta {
+            font-size: 9px;
+            color: #444;
+        }
+
+        .image-meta span {
+            margin-right: 10px;
+        }
+
+        .image-meta .reduced {
+            color: #0f0;
+        }
+
+        .image-meta .original {
+            color: #666;
+        }
+
+        .image-status {
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 2px;
+        }
+
+        .image-status.pending {
+            background: #332;
+            color: #aa0;
+        }
+
+        .image-status.done {
+            background: #232;
+            color: #0f0;
+        }
+
+        .image-status.error {
+            background: #322;
+            color: #f55;
+        }
+
+        .image-remove {
+            background: none;
+            border: none;
+            color: #444;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .image-remove:hover {
+            color: #f55;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #252525;
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #ddd;
+        }
+
+        .btn-convert {
+            background: #1a2a1a;
+            border-color: #2a4a2a;
+        }
+
+        .btn-convert:hover:not(:disabled) {
+            background: #2a3a2a;
+        }
+
+        /* Progress */
+        .progress-bar {
+            height: 4px;
+            background: #222;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .progress-bar.active {
+            display: block;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #0f0;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #333;
+            padding: 20px;
+            border-top: 1px solid #222;
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #6a9bd1;
+        }
+
+        .footer-links span {
+            color: #333;
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+            z-index: 1000;
+        }
+
+        /* Feedback */
+        .feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0a0;
+            color: #000;
+            padding: 20px 40px;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2000;
+        }
+
+        .feedback.show {
+            opacity: 1;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-size: 10px;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="feedback" id="feedback">[ TÉLÉCHARGÉ ]</div>
+
+    <div class="container">
+        <a href="../" class="back-btn">← RETOUR_SYSTÈME</a>
+        
+        <div class="header">
+            <div class="header-small">// BLACKCROW_OS // IMG_CONVERTER</div>
+            <h1>> Convertisseur JPG 720p</h1>
+            <div class="header-sub">Convertir et redimensionner vos images — 100% local, gratuit, sans pub</div>
+        </div>
+
+        <!-- Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+            <div class="drop-zone-icon">⬆</div>
+            <div class="drop-zone-text">Glissez vos images ici ou cliquez pour sélectionner</div>
+            <div class="drop-zone-hint">PNG, JPG, WEBP, GIF, BMP acceptés</div>
+            <input type="file" id="fileInput" multiple accept="image/*">
+        </div>
+
+        <!-- Settings -->
+        <div class="settings">
+            <div class="settings-header">// PARAMÈTRES</div>
+            <div class="settings-row">
+                <div class="setting-item">
+                    <label>> PRÉFIXE:</label>
+                    <input type="text" id="prefix" value="img" placeholder="img" style="width:100px;">
+                </div>
+                <div class="setting-item">
+                    <label>> PROCHAIN_ID:</label>
+                    <input type="number" id="nextId" value="1" min="1" style="width:60px;">
+                </div>
+                <div class="setting-item">
+                    <label>> HAUTEUR_MAX:</label>
+                    <input type="number" id="maxHeight" value="720" min="100" max="4000">
+                    <label>px</label>
+                </div>
+            </div>
+            <div class="settings-row" style="margin-top:10px;">
+                <div class="setting-item">
+                    <label>> QUALITÉ:</label>
+                    <input type="range" id="quality" min="10" max="100" value="85">
+                    <span class="quality-value" id="qualityValue">85%</span>
+                </div>
+                <div class="setting-item">
+                    <label>> FORMAT:</label>
+                    <select id="outputFormat">
+                        <option value="jpeg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WEBP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="settings-hint">Nommage: <span id="namingPreview">img_001.jpg</span></div>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Images List -->
+        <div class="images-section" id="imagesSection">
+            <div class="images-header">
+                <span>// IMAGES <span class="images-count" id="imagesCount">(0)</span></span>
+                <button class="clear-all-btn" id="clearAllBtn">[ TOUT EFFACER ]</button>
+            </div>
+            <div class="images-list" id="imagesList"></div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats" id="stats" style="display:none;">
+            <div class="stat-item">
+                <span>Taille originale:</span>
+                <span class="stat-value" id="statOriginal">0 KB</span>
+            </div>
+            <div class="stat-item">
+                <span>Taille finale:</span>
+                <span class="stat-value" id="statFinal">0 KB</span>
+            </div>
+            <div class="stat-item">
+                <span>Réduction:</span>
+                <span class="stat-value" id="statReduction">0%</span>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <button class="btn btn-convert" id="convertBtn" disabled>[ CONVERTIR TOUTES LES IMAGES ]</button>
+        <button class="btn btn-primary" id="downloadBtn" disabled>⬇ TÉLÉCHARGER LE ZIP</button>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://www.vaisseau-monde.fr" target="_blank" rel="noopener">Blog</a>
+                <span>•</span>
+                <a href="https://levaisseaumonde.github.io/BlackCrow/" target="_blank" rel="noopener">BlackCrow OS</a>
+                <span>•</span>
+                <a href="https://www.youtube.com/@VaisseauMonde" target="_blank" rel="noopener">YouTube</a>
+            </div>
+            <div>// LA TERRE EXISTE // QLVVP 🖤</div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let images = [];
+        let convertedImages = [];
+
+        // Elements
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const prefix = document.getElementById('prefix');
+        const nextId = document.getElementById('nextId');
+        const namingPreview = document.getElementById('namingPreview');
+        const maxHeight = document.getElementById('maxHeight');
+        const quality = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+        const outputFormat = document.getElementById('outputFormat');
+        const imagesSection = document.getElementById('imagesSection');
+        const imagesList = document.getElementById('imagesList');
+        const imagesCount = document.getElementById('imagesCount');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const convertBtn = document.getElementById('convertBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const feedback = document.getElementById('feedback');
+        const stats = document.getElementById('stats');
+        const statOriginal = document.getElementById('statOriginal');
+        const statFinal = document.getElementById('statFinal');
+        const statReduction = document.getElementById('statReduction');
+
+        // Quality slider
+        quality.addEventListener('input', () => {
+            qualityValue.textContent = quality.value + '%';
+        });
+
+        // Load saved settings from localStorage
+        function loadSettings() {
+            const saved = localStorage.getItem('blackcrow_imgconv_settings');
+            if (saved) {
+                const settings = JSON.parse(saved);
+                prefix.value = settings.prefix || 'img';
+                nextId.value = settings.nextId || 1;
+                maxHeight.value = settings.maxHeight || 720;
+                quality.value = settings.quality || 85;
+                qualityValue.textContent = quality.value + '%';
+                outputFormat.value = settings.outputFormat || 'jpeg';
+            }
+            updateNamingPreview();
+        }
+
+        // Save settings to localStorage
+        function saveSettings() {
+            const settings = {
+                prefix: prefix.value,
+                nextId: parseInt(nextId.value),
+                maxHeight: parseInt(maxHeight.value),
+                quality: parseInt(quality.value),
+                outputFormat: outputFormat.value
+            };
+            localStorage.setItem('blackcrow_imgconv_settings', JSON.stringify(settings));
+        }
+
+        // Update naming preview
+        function updateNamingPreview() {
+            const ext = outputFormat.value === 'jpeg' ? 'jpg' : outputFormat.value;
+            const id = String(nextId.value).padStart(3, '0');
+            namingPreview.textContent = `${prefix.value}_${id}.${ext}`;
+        }
+
+        // Settings change listeners
+        prefix.addEventListener('input', () => { updateNamingPreview(); saveSettings(); });
+        nextId.addEventListener('input', () => { updateNamingPreview(); saveSettings(); });
+        maxHeight.addEventListener('change', () => { renderImages(); saveSettings(); });
+        quality.addEventListener('input', () => { saveSettings(); });
+        outputFormat.addEventListener('change', () => { updateNamingPreview(); saveSettings(); });
+
+        // Load settings on start
+        loadSettings();
+
+        // Drop zone events
+        dropZone.addEventListener('click', () => fileInput.click());
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+            fileInput.value = '';
+        });
+
+        // Handle files
+        function handleFiles(files) {
+            for (const file of files) {
+                if (!file.type.startsWith('image/')) continue;
+                
+                const id = Date.now() + Math.random().toString(36).substr(2, 9);
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        images.push({
+                            id,
+                            file,
+                            name: file.name,
+                            originalSize: file.size,
+                            width: img.width,
+                            height: img.height,
+                            dataUrl: e.target.result,
+                            status: 'pending',
+                            converted: null
+                        });
+                        renderImages();
+                        updateButtons();
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Render images list
+        function renderImages() {
+            imagesList.innerHTML = images.map(img => {
+                const willResize = img.height > parseInt(maxHeight.value);
+                const newHeight = willResize ? maxHeight.value : img.height;
+                const newWidth = willResize ? Math.round(img.width * (maxHeight.value / img.height)) : img.width;
+                
+                return `
+                    <div class="image-item" data-id="${img.id}">
+                        <img src="${img.dataUrl}" class="image-thumb" alt="${img.name}">
+                        <div class="image-info">
+                            <div class="image-name">${img.name}${img.newName ? ` → <span class="new-name">${img.newName}</span>` : ''}</div>
+                            <div class="image-meta">
+                                <span class="original">${img.width}×${img.height}</span>
+                                ${willResize ? `<span>→</span> <span class="reduced">${newWidth}×${newHeight}</span>` : '<span class="reduced">(inchangé)</span>'}
+                                <span>${formatSize(img.originalSize)}</span>
+                                ${img.converted ? `<span>→</span> <span class="reduced">${formatSize(img.converted.size)}</span>` : ''}
+                            </div>
+                        </div>
+                        <span class="image-status ${img.status}">${img.status === 'pending' ? 'EN ATTENTE' : img.status === 'done' ? 'CONVERTI' : 'ERREUR'}</span>
+                        <button class="image-remove" onclick="removeImage('${img.id}')">✕</button>
+                    </div>
+                `;
+            }).join('');
+
+            imagesCount.textContent = `(${images.length})`;
+            imagesSection.classList.toggle('has-images', images.length > 0);
+        }
+
+        // Remove image
+        window.removeImage = function(id) {
+            images = images.filter(img => img.id !== id);
+            convertedImages = convertedImages.filter(img => img.id !== id);
+            renderImages();
+            updateButtons();
+            updateStats();
+        };
+
+        // Clear all
+        clearAllBtn.addEventListener('click', () => {
+            images = [];
+            convertedImages = [];
+            renderImages();
+            updateButtons();
+            updateStats();
+        });
+
+        // Update buttons state
+        function updateButtons() {
+            convertBtn.disabled = images.length === 0;
+            downloadBtn.disabled = convertedImages.length === 0;
+        }
+
+        // Format file size
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+
+        // Convert images
+        convertBtn.addEventListener('click', async () => {
+            convertBtn.disabled = true;
+            progressBar.classList.add('active');
+            convertedImages = [];
+
+            const maxH = parseInt(maxHeight.value);
+            const qual = parseInt(quality.value) / 100;
+            const format = outputFormat.value;
+            let currentId = parseInt(nextId.value);
+
+            for (let i = 0; i < images.length; i++) {
+                const img = images[i];
+                progressFill.style.width = ((i + 1) / images.length * 100) + '%';
+
+                try {
+                    const converted = await convertImage(img, maxH, qual, format);
+                    img.status = 'done';
+                    img.converted = converted;
+                    
+                    // Generate new filename with prefix and incremented ID
+                    const newName = generateFilename(currentId, format);
+                    img.newName = newName;
+                    currentId++;
+                    
+                    convertedImages.push({
+                        id: img.id,
+                        name: newName,
+                        blob: converted.blob,
+                        size: converted.size
+                    });
+                } catch (err) {
+                    img.status = 'error';
+                    console.error('Error converting', img.name, err);
+                }
+
+                renderImages();
+            }
+
+            // Update nextId for next batch
+            nextId.value = currentId;
+            saveSettings();
+            updateNamingPreview();
+
+            progressBar.classList.remove('active');
+            progressFill.style.width = '0%';
+            updateButtons();
+            updateStats();
+        });
+
+        // Generate filename with prefix and ID
+        function generateFilename(id, format) {
+            const ext = format === 'jpeg' ? 'jpg' : format;
+            const paddedId = String(id).padStart(3, '0');
+            return `${prefix.value}_${paddedId}.${ext}`;
+        }
+
+        // Convert single image - STRIPS ALL METADATA by using canvas redraw
+        function convertImage(imgData, maxH, qual, format) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    // Resize only if height exceeds max
+                    if (height > maxH) {
+                        width = Math.round(width * (maxH / height));
+                        height = maxH;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    
+                    // White background for JPEG (removes transparency)
+                    if (format === 'jpeg') {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.fillRect(0, 0, width, height);
+                    }
+
+                    // Drawing to canvas automatically strips ALL metadata (EXIF, IPTC, XMP, etc.)
+                    // This includes: camera info, GPS location, date/time, author, title, comments
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob(blob => {
+                        if (blob) {
+                            resolve({ blob, size: blob.size });
+                        } else {
+                            reject(new Error('Failed to convert'));
+                        }
+                    }, `image/${format}`, qual);
+                };
+                img.onerror = reject;
+                img.src = imgData.dataUrl;
+            });
+        }
+
+        // Update stats
+        function updateStats() {
+            if (convertedImages.length === 0) {
+                stats.style.display = 'none';
+                return;
+            }
+
+            const originalTotal = images.reduce((sum, img) => sum + img.originalSize, 0);
+            const finalTotal = convertedImages.reduce((sum, img) => sum + img.size, 0);
+            const reduction = originalTotal > 0 ? Math.round((1 - finalTotal / originalTotal) * 100) : 0;
+
+            statOriginal.textContent = formatSize(originalTotal);
+            statFinal.textContent = formatSize(finalTotal);
+            statReduction.textContent = reduction + '%';
+            stats.style.display = 'flex';
+        }
+
+        // Download ZIP
+        downloadBtn.addEventListener('click', async () => {
+            if (convertedImages.length === 0) return;
+
+            downloadBtn.disabled = true;
+            downloadBtn.textContent = '[ CRÉATION DU ZIP... ]';
+
+            try {
+                const zip = new JSZip();
+                
+                for (const img of convertedImages) {
+                    zip.file(img.name, img.blob);
+                }
+
+                const content = await zip.generateAsync({ type: 'blob' });
+                const url = URL.createObjectURL(content);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `images-converted-${Date.now()}.zip`;
+                a.click();
+                URL.revokeObjectURL(url);
+
+                feedback.textContent = '[ TÉLÉCHARGÉ ]';
+                feedback.classList.add('show');
+                setTimeout(() => feedback.classList.remove('show'), 1500);
+            } catch (err) {
+                console.error('Error creating ZIP', err);
+                feedback.textContent = '[ ERREUR ]';
+                feedback.classList.add('show');
+                setTimeout(() => feedback.classList.remove('show'), 1500);
+            }
+
+            downloadBtn.disabled = false;
+            downloadBtn.textContent = '⬇ TÉLÉCHARGER LE ZIP';
+        });
+
+    </script>
+</body>
+</html>
