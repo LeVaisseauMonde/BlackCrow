@@ -612,7 +612,15 @@
     // Charger la navbar partagée
     fetch('https://levaisseaumonde.github.io/BlackCrow/navbar.html')
         .then(r => r.text())
-        .then(html => { document.getElementById('bc-navbar').innerHTML = html; })
+        .then(html => {
+            document.getElementById('bc-navbar').innerHTML = html;
+            var current = window.location.href;
+            document.querySelectorAll('.bc-nav a').forEach(function(link) {
+                if (current.indexOf(link.getAttribute('href').replace(/\/$/, '')) !== -1) {
+                    link.classList.add('bc-active');
+                }
+            });
+        })
         .catch(() => {});
 
     // ══════════════════════════════════════
@@ -716,7 +724,6 @@
         setTimeout(() => search(urlQuery), 300);
     }
 
-})();
     </script>
 
 </body>
