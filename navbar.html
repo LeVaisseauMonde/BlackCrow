@@ -116,16 +116,8 @@
 
 <script>
 (function() {
-  // Marquer le lien actif selon l'URL courante
-  var current = window.location.href;
-  var links = document.querySelectorAll('.bc-nav a');
-  links.forEach(function(link) {
-    if (current.indexOf(link.getAttribute('href').replace(/\/$/, '')) !== -1) {
-      link.classList.add('bc-active');
-    }
-  });
-
-  // Mobile toggle
+  // Mobile toggle uniquement — la détection du lien actif
+  // est gérée après l'injection (voir fetch dans chaque outil)
   var toggle = document.getElementById('bcNavToggle');
   var nav = document.getElementById('bcNav');
   if (toggle && nav) {
