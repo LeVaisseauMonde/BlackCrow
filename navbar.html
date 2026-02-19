@@ -1,0 +1,137 @@
+<!-- 
+    BLACKCROW OS — NAVBAR PARTAGÉE v1.0
+    Hébergée sur : https://levaisseaumonde.github.io/BlackCrow/navbar.html
+    Intégration sur chaque outil :
+
+    <div id="bc-navbar"></div>
+    <script>
+      fetch('https://levaisseaumonde.github.io/BlackCrow/navbar.html')
+        .then(r => r.text())
+        .then(html => document.getElementById('bc-navbar').innerHTML = html);
+    </script>
+
+    Ajouter aussi dans le <head> de chaque outil :
+    <style>body { padding-top: 48px; }</style>
+-->
+
+<style>
+  .bc-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    background: rgba(8,8,8,0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    z-index: 9000;
+    font-family: 'Outfit', 'Segoe UI', sans-serif;
+  }
+
+  .bc-nav a {
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+
+  .bc-nav a:hover {
+    color: #e8e8e8;
+    background: #0f0f0f;
+  }
+
+  /* Lien actif = page courante */
+  .bc-nav a.bc-active {
+    color: #c8ff00;
+  }
+
+  .bc-nav-sep {
+    width: 1px;
+    height: 16px;
+    background: #1e1e1e;
+    margin: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* Mobile */
+  .bc-nav-toggle {
+    display: none;
+    position: fixed;
+    top: 10px; right: 16px;
+    background: none;
+    border: 1px solid #1e1e1e;
+    color: #555;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    z-index: 9001;
+  }
+
+  @media (max-width: 640px) {
+    .bc-nav {
+      flex-wrap: wrap;
+      height: auto;
+      max-height: 48px;
+      overflow: hidden;
+      justify-content: flex-start;
+      padding: 0 12px;
+      transition: max-height 0.3s ease;
+    }
+
+    .bc-nav.bc-open {
+      max-height: 300px;
+      padding: 12px;
+      gap: 2px;
+    }
+
+    .bc-nav.bc-open a {
+      width: 100%;
+    }
+
+    .bc-nav-sep { display: none; }
+    .bc-nav-toggle { display: block; }
+  }
+</style>
+
+<nav class="bc-nav" id="bcNav" role="navigation" aria-label="Navigation BlackCrow OS">
+  <a href="https://levaisseaumonde.github.io/BlackCrow/" id="bc-link-home">Accueil</a>
+  <div class="bc-nav-sep"></div>
+  <a href="https://levaisseaumonde.github.io/qr-code-generator/" id="bc-link-qr">QR Code Generator</a>
+  <a href="https://levaisseaumonde.github.io/watermark-tool/" id="bc-link-watermark">Watermark Image</a>
+  <a href="https://levaisseaumonde.github.io/image-converter/" id="bc-link-imgconv">Convertir Image</a>
+  <a href="https://levaisseaumonde.github.io/trending-widget/" id="bc-link-trending">Widget Tendance</a>
+  <a href="https://levaisseaumonde.github.io/link-hub-generator/" id="bc-link-linkhub">Page de Liens</a>
+</nav>
+
+<button class="bc-nav-toggle" id="bcNavToggle" aria-label="Menu">MENU</button>
+
+<script>
+(function() {
+  // Marquer le lien actif selon l'URL courante
+  var current = window.location.href;
+  var links = document.querySelectorAll('.bc-nav a');
+  links.forEach(function(link) {
+    if (current.indexOf(link.getAttribute('href').replace(/\/$/, '')) !== -1) {
+      link.classList.add('bc-active');
+    }
+  });
+
+  // Mobile toggle
+  var toggle = document.getElementById('bcNavToggle');
+  var nav = document.getElementById('bcNav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function() {
+      nav.classList.toggle('bc-open');
+    });
+  }
+})();
+</script>

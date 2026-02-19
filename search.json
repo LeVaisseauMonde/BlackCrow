@@ -1,0 +1,92 @@
+[
+  {
+    "titre": "QR Code Generator — Créer un QR code gratuit avec logo",
+    "description": "Générez des QR codes personnalisés avec votre logo. Gratuit, sans inscription, sans pub. Téléchargement direct.",
+    "url": "https://levaisseaumonde.github.io/qr-code-generator/",
+    "tags": ["outil", "qr code", "générateur", "gratuit"]
+  },
+  {
+    "titre": "Watermark Image — Ajouter un filigrane à une image",
+    "description": "Ajoutez un watermark à vos images gratuitement. Traitement 100% local, vos fichiers ne quittent pas votre appareil.",
+    "url": "https://levaisseaumonde.github.io/watermark-tool/",
+    "tags": ["outil", "watermark", "filigrane", "image", "gratuit"]
+  },
+  {
+    "titre": "Widget Tendance Blogger — Créer un widget En tendance gratuit",
+    "description": "Générez un widget personnalisable 'En tendance' pour votre blog Blogger. Copier-coller le HTML, c'est tout.",
+    "url": "https://levaisseaumonde.github.io/trending-widget/",
+    "tags": ["outil", "widget", "blogger", "tendance", "gratuit"]
+  },
+  {
+    "titre": "Page de Liens — Alternative gratuite à Linktree",
+    "description": "Créez votre page de liens personnalisée sans compte. Alternative 100% gratuite à Linktree. Téléchargez votre HTML.",
+    "url": "https://levaisseaumonde.github.io/link-hub-generator/",
+    "tags": ["outil", "linktree", "page de liens", "bio link", "gratuit"]
+  },
+  {
+    "titre": "Convertir une Image en JPG 720p — Redimensionner gratuitement",
+    "description": "Convertissez vos images en JPG avec redimensionnement automatique à 720 pixels max. Gratuit, sans inscription, traitement 100% local dans votre navigateur.",
+    "url": "https://levaisseaumonde.github.io/image-converter/",
+    "tags": ["outil", "convertir image", "jpg", "redimensionner", "720p", "compresser", "gratuit"]
+  },
+  {
+    "titre": "BlackCrow OS — Interface du Vaisseau-Monde",
+    "description": "Hub central des outils gratuits BlackCrow. Interface système de l'univers Le Vaisseau-Monde.",
+    "url": "https://levaisseaumonde.github.io/BlackCrow/",
+    "tags": ["blackcrow", "hub", "interface", "vaisseau-monde"]
+  },
+  {
+    "titre": "Le Vaisseau-Monde — Blog SF, critiques et actualités cinéma",
+    "description": "Actualité cinéma SF, critiques de films, et La Traversée Millénaire — série audio originale sur un vaisseau générationnel qui a oublié sa mission.",
+    "url": "https://www.vaisseau-monde.fr",
+    "tags": ["blog", "science-fiction", "cinéma", "vaisseau-monde"]
+  },
+  {
+    "titre": "Le Vaisseau-Monde — Chaîne YouTube",
+    "description": "Épisodes de La Traversée Millénaire, analyses SF et archives Genesis. Chaîne YouTube du Vaisseau-Monde.",
+    "url": "https://www.youtube.com/@VaisseauMonde",
+    "tags": ["youtube", "vidéo", "science-fiction", "vaisseau-monde"]
+  },
+  {
+    "titre": "Le Vaisseau-Monde — Lire sur Wattpad",
+    "description": "Lisez Le Vaisseau-Monde sur Wattpad. Un vaisseau générationnel qui voyage depuis des millénaires vers une destination oubliée.",
+    "url": "https://www.wattpad.com/story/407419657-le-vaisseau-monde",
+    "tags": ["wattpad", "roman", "lecture", "science-fiction", "vaisseau-monde"]
+  },
+  {
+    "titre": "Le Vaisseau-Monde — Profil Wattpad",
+    "description": "Profil Wattpad du Vaisseau-Monde. Tous les écrits de l'univers Genesis.",
+    "url": "https://www.wattpad.com/user/LeVaisseauMonde",
+    "tags": ["wattpad", "profil", "vaisseau-monde"]
+  },
+  {
+    "titre": "Reddit — Communauté r/VaisseauMonde",
+    "description": "La communauté Reddit du Vaisseau-Monde. Théories, discussions, archives et easter eggs.",
+    "url": "https://www.reddit.com/r/VaisseauMonde/",
+    "tags": ["reddit", "communauté", "discussion", "vaisseau-monde"]
+  },
+  {
+    "titre": "SensCritique — BlackCrow OS",
+    "description": "Page SensCritique de BlackCrow OS. Critiques et avis sur l'univers du Vaisseau-Monde.",
+    "url": "https://www.senscritique.com/BlackCrowOS",
+    "tags": ["senscritique", "blackcrow", "avis"]
+  },
+  {
+    "titre": "SensCritique — Le Vaisseau-Monde",
+    "description": "Page SensCritique du Vaisseau-Monde. Critiques et avis sur la série.",
+    "url": "https://www.senscritique.com/Le-Vaisseau-Monde",
+    "tags": ["senscritique", "vaisseau-monde", "avis"]
+  },
+  {
+    "titre": "Adira était là — Épisode Genesis 1.1",
+    "description": "Premier épisode de Genesis. Adira découvre les archives du vaisseau. Le début de tout.",
+    "url": "https://www.vaisseau-monde.fr",
+    "tags": ["genesis", "épisode", "adira", "archives", "vaisseau-monde"]
+  },
+  {
+    "titre": "TikTok — @adirawashere",
+    "description": "Le compte TikTok d'Adira. Découvertes terrestres, fragments du vaisseau, transmissions cryptiques.",
+    "url": "https://tiktok.com/@adirawashere",
+    "tags": ["tiktok", "adira", "vidéo courte", "vaisseau-monde"]
+  }
+]
