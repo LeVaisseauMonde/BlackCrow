@@ -1,87 +1,44 @@
-# BlackCrow OS
+# 🦅 BlackCrow OS
 
-> *Interface système du Vaisseau-Monde*
+> Interface système du Vaisseau-Monde — Suite d'outils gratuits en ligne
 
-[![Le Vaisseau-Monde](https://img.shields.io/badge/Univers-Le%20Vaisseau--Monde-black?style=flat-square)](https://www.vaisseau-monde.fr)
-[![YouTube](https://img.shields.io/badge/YouTube-@VaisseauMonde-red?style=flat-square&logo=youtube)](https://www.youtube.com/@VaisseauMonde)
-[![Wattpad](https://img.shields.io/badge/Wattpad-Lire%20l'histoire-orange?style=flat-square)](https://www.wattpad.com/story/407419657-le-vaisseau-monde)
-
----
-
-## 🖥️ C'est quoi BlackCrow ?
-
-BlackCrow OS est l'interface système fictive du **Vaisseau-Monde**, un univers de science-fiction explorant les thèmes des vaisseaux générationnels, de la mémoire collective et de l'oubli.
-
-Mais c'est aussi une **interface fonctionnelle** avec de vrais outils gratuits.
-
-La fiction rencontre la réalité.
+[![Live](https://img.shields.io/badge/LIVE-levaisseaumonde.github.io-c8ff00?style=flat-square&labelColor=0a0a0a)](https://levaisseaumonde.github.io/BlackCrow/)
+[![Vaisseau-Monde](https://img.shields.io/badge/BLOG-vaisseau--monde.fr-333?style=flat-square&labelColor=0a0a0a)](https://www.vaisseau-monde.fr)
 
 ---
 
-## 🛠️ Outils disponibles
-### [MATRIX.QR — Générateur QR Code](https://levaisseaumonde.github.io/BlackCrow/tools/qr-generator-blackcrow.html)
-Créez des QR codes personnalisés gratuitement :
-- Ajout de logo au centre
-- Style unique avec effet "corruption"
-- Export PNG haute qualité
-- Aucune inscription requise
+## C'est quoi ?
 
-### [MARQUE.SYS — Outil Watermark](https://levaisseaumonde.github.io/BlackCrow/tools/blackcrow-watermark-tool.html)
-Ajoutez un filigrane à vos images :
-- 9 positions de placement
-- Opacité et taille ajustables
-- Métadonnées optionnelles
-- **100% local** — vos images ne quittent jamais votre navigateur
+BlackCrow OS est le hub central d'une suite d'outils gratuits développés sous l'univers de [Le Vaisseau-Monde](https://www.vaisseau-monde.fr). Chaque outil fonctionne directement dans le navigateur — sans pub, sans inscription, sans que vos données ne transitent par un serveur.
 
-### [TREND.WDG — Générateur Widget Tendance](https://levaisseaumonde.github.io/BlackCrow/tools/trending-widget-generator-blackcrow.html)
-Créez des widgets "En tendance" pour Blogger :
-- Aperçu en temps réel
-- Couleurs, tailles et styles personnalisables
-- Code HTML/CSS prêt à copier-coller
-- Sauvegarde automatique des paramètres
+Le moteur de recherche intégré indexe l'ensemble des ressources de l'univers Vaisseau-Monde via un fichier `search.json` local.
 
 ---
 
-## 🚀 Accès
+## Outils disponibles
 
-**Interface principale :** [levaisseaumonde.github.io/BlackCrow](https://levaisseaumonde.github.io/BlackCrow/)
-
----
-
-## 📖 L'univers du Vaisseau-Monde
-
-Le Vaisseau-Monde est une arche interstellaire lancée il y a des millénaires vers une planète lointaine. Le voyage dure 10 000 ans. Personne à bord ne verra l'arrivée.
-
-Après des siècles, les habitants ont oublié qu'ils voyagent. La Terre est devenue un mythe. Les protocoles d'atterrissage ont été perdus.
-
-**Adira**, archiviste du secteur 4, va découvrir un fichier qui change tout...
-
-### Où découvrir l'histoire :
-
-- 📚 **[Wattpad](https://www.wattpad.com/story/407419657-le-vaisseau-monde)** — Lire le roman
-- 📝 **[Blog](https://www.vaisseau-monde.fr)** — Articles, analyses, coulisses
-- 🎬 **[YouTube](https://www.youtube.com/@VaisseauMonde)** — Vidéos et podcasts
+| Outil | Description | Repo |
+|-------|-------------|------|
+| QR Code Generator | Créer un QR code avec logo | [→](https://github.com/LeVaisseauMonde/qr-code-generator) |
+| Watermark Image | Ajouter un filigrane à une image | [→](https://github.com/LeVaisseauMonde/watermark-tool) |
+| Convertir Image JPG | Redimensionner en JPG 720p | [→](https://github.com/LeVaisseauMonde/image-converter) |
+| Widget Tendance Blogger | Générer un widget pour Blogger | [→](https://github.com/LeVaisseauMonde/trending-widget) |
+| Page de Liens | Alternative gratuite à Linktree | [→](https://github.com/LeVaisseauMonde/link-hub-generator) |
 
 ---
 
-## 🔮 Modules à venir
 
-
-
-## 📡 Contact
-
-- Reddit : [r/VaisseauMonde](https://www.reddit.com/r/VaisseauMonde/)
 
 ---
 
-## 📜 Licence
+## Univers
 
-Les outils sont gratuits et libres d'utilisation.
+BlackCrow OS est l'interface système fictive du [Vaisseau-Monde](https://www.vaisseau-monde.fr) — un projet de science-fiction transmedia autour d'un vaisseau générationnel qui a oublié sa mission.
 
-L'univers du Vaisseau-Monde et ses contenus narratifs sont © Le Vaisseau-Monde.
-
----
-
-**QLVVP** 🖤
+- 📖 [Lire sur Wattpad](https://www.wattpad.com/story/407419657-le-vaisseau-monde)
+- 📺 [Chaîne YouTube](https://www.youtube.com/@VaisseauMonde)
+- 💬 [Reddit r/VaisseauMonde](https://www.reddit.com/r/VaisseauMonde/)
 
 ---
+
+*QLVVP 🖤 — Ceux qui cherchent trouvent.*
