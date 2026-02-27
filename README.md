@@ -24,6 +24,7 @@ Le moteur de recherche intégré indexe l'ensemble des ressources de l'univers V
 | Convertir Image JPG | Redimensionner en JPG 720p | [→](https://github.com/LeVaisseauMonde/image-converter) |
 | Widget Tendance Blogger | Générer un widget pour Blogger | [→](https://github.com/LeVaisseauMonde/trending-widget) |
 | Page de Liens | Alternative gratuite à Linktree | [→](https://github.com/LeVaisseauMonde/link-hub-generator) |
+| Frise Chronologique | Créer une timeline interactive embarquable | [→](https://github.com/LeVaisseauMonde/timeline-generator) |
 
 ---
 
